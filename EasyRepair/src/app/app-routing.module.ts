@@ -19,10 +19,10 @@ const redirectLoggedInUserProfile = () => map(user => user ? ['user/profile', (u
 const redirectLoggedInProfProfile = () => map(user => user ? ['professionals/profile', (user as any).uid] : true);
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  { path: '', component: HomeComponent },
   {
     path: 'user/login',
-    component: LoginComponent,
+    component: LoginComponent
     // data: { authGuardPipe: redirectLoggedInUserProfile }
   },
   {
@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path: 'user/profile/:id',
     component: ProfileComponent,
-    canActivate:[AuthGuard, AngularFireAuthGuard],
+    canActivate: [AuthGuard, AngularFireAuthGuard],
     // data: { authGuardPipe: unathorizeRedirect }
   },
   {
@@ -49,13 +49,13 @@ const routes: Routes = [
   {
     path: 'professionals/profile/:id',
     component: proProfile,
-    canActivate:[AuthGuard, AngularFireAuthGuard],
+    canActivate: [AuthGuard, AngularFireAuthGuard],
     // data: { authGuardPipe: unathorizeRedirect }
   },
   {
-    path:'main', component:MainComponent
+    path: 'main', component: MainComponent
   },
-  { path: 'contact', component: ContactComponent},
+  { path: 'contact', component: ContactComponent },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent }
 ];
 
