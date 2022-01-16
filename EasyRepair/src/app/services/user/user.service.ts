@@ -23,7 +23,7 @@ export class UserService {
 
   async CreateUserData(userdata: User) {
 
-    return await this.http.post<User>(`/create`, userdata).subscribe(data => {
+    return await this.http.post<User>(`${environment.userLocalhost}/create`, userdata).subscribe(data => {
       this.user = data;
     });
   }
@@ -41,7 +41,7 @@ export class UserService {
           }
         };
         this.router.navigateByUrl(`/user/profile/${uid}`);
-        return await this.http.put<User>(`/edit/${uid}`, user).toPromise();
+        return await this.http.put<User>(`${environment.userLocalhost}/edit/${uid}`, user).toPromise();
 
       }
     } catch (error) {
@@ -49,13 +49,13 @@ export class UserService {
     }
   }
   async GetUserById(uid: string) {    
-    return await this.http.get(`/profile/${uid}`).toPromise();
+    return await this.http.get(`${environment.userLocalhost}/profile/${uid}`).toPromise();
   }
   async DeleteUserProfile() {
     await firebase.default.auth().currentUser?.delete();
     this.cookies.deleteAll();
   }
   async DeleteUserData(uid: string) {
-    return this.http.delete(`/delete/${uid}`).toPromise();
+    return this.http.delete(`${environment.userLocalhost}/delete/${uid}`).toPromise();
   }
 }

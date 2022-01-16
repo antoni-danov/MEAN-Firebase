@@ -48,7 +48,7 @@ import { ContactComponent } from './components/contact/contact.component';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule,

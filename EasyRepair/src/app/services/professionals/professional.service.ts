@@ -24,22 +24,22 @@ export class ProfessionalService {
 
   async CreateProfessionalData(userdata: Professional) {
 
-    return await this.http.post<Professional>(`/create`, userdata)
+    return await this.http.post<Professional>(`${environment.professionalLocalhost}/create`, userdata)
     .subscribe(data => {
       this.user = data;
     });
   }
   async GetAllProfessionals() {    
-    return await this.http.get<GetProfesional>(`/all`).toPromise();
+    return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/all`).toPromise();
   }
   async GetByProfession(userdata: string){
-    return await this.http.get<Professional>(`/profession/${userdata}`).toPromise();
+    return await this.http.get<Professional>(`${environment.professionalLocalhost}/profession/${userdata}`).toPromise();
   }
   async GetProfessionalById(uid: string) {    
-    return await this.http.get<Professional>(`/profile/${uid}`).toPromise();
+    return await this.http.get<Professional>(`${environment.professionalLocalhost}/profile/${uid}`).toPromise();
   }
   async PublicProfessional(uid: string) {    
-    return await this.http.get<GetProfesional>(`/publicProfile/${uid}`).toPromise();
+    return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
   }
   async UpdateProfessionalProfile(userdata: any, uid: string | null) {
 
@@ -56,7 +56,7 @@ export class ProfessionalService {
           profession: userdata.profession
         };
         await this.router.navigateByUrl(`/professionals/profile/${uid}`);
-        return await this.http.put<Professional>(`/edit/${uid}`, professional).toPromise();
+        return await this.http.put<Professional>(`${environment.professionalLocalhost}/edit/${uid}`, professional).toPromise();
 
       }
     } catch (error) {
@@ -68,6 +68,6 @@ export class ProfessionalService {
     this.cookies.deleteAll();
   }
   async DeleteProfessionalData(uid: string) {
-    return this.http.delete(`/delete/${uid}`).toPromise();
+    return this.http.delete(`${environment.professionalLocalhost}/delete/${uid}`).toPromise();
   }
 }
