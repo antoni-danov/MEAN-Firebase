@@ -1,0 +1,60 @@
+<div class="container">
+    <section class="buttons mx-4">
+        <button type="button" id="all" class="btn btn-success mx-2" (click)="reload()">All</button>
+        <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</button>
+        <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Electricians</button>
+        <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Carpenters</button>
+        <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Tilers</button>
+        <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Locksmiths</button>
+        <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Painters</button>
+        <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat engineers</button>
+    </section>
+</div>
+<hr>
+<div class="cards" *ngIf="list">
+    <div *ngFor="let item of allProfessions">
+        <div class="mainCard m-4">
+            <div class="card" style="width: 16rem;">
+                <div class="text-center">
+                    <div class="card-body">
+                        <img class="col-sm-4 rounded float-left" src="../../../assets/images/builder.png"
+                            alt="Card image cap">
+                        <h4 class="card-title mt-3"><strong> {{item.profession | titlecase}} </strong></h4>
+                        <p class="card-text">
+                        <p><strong>Name:</strong> {{item.firstname | titlecase}} {{item.lastname | titlecase}}</p>
+                        <p><strong>Profession:</strong> {{item.profession | titlecase}}</p>
+                        <p><strong>City:</strong> {{item.address.city | titlecase}}</p>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary mb-3" (click)="canActivate(item.uid)">Get in touch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cards" *ngIf="profession">
+    <div *ngFor="let item of singleProfession">
+        <div class="mainCard m-4">
+            <div class="card" style="width: 16rem;">
+                <div class="text-center">
+                    <div class="card-body">
+                        <img class="col-sm-4 rounded float-left" src="../../../assets/images/builder.png"
+                            alt="Card image cap">
+                        <h4 class="card-title mt-3"><strong> {{item.profession | titlecase}} </strong></h4>
+                        <p class="card-text">
+                        <p><strong>Name:</strong> {{item.firstname | titlecase}} {{item.lastname | titlecase}}</p>
+                        <p><strong>Profession:</strong> {{item.profession | titlecase}}</p>
+                        <p><strong>City:</strong> {{item.address.city | titlecase}}</p>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary mb-3" (click)="canActivate(item.uid)">Get in touch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="emptyCategory" *ngIf="profession && singleProfession.length == 0">
+    <h3>There is no Professionals for the moment on this category.</h3>
+</div>

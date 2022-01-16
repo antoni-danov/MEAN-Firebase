@@ -1,0 +1,53 @@
+<div class="container">
+    <section class="left-side">
+        <h1><a href="/">Easy repair<i class="fas fa-tools"></i></a></h1>
+    </section>
+    <section class="buttons">
+        <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/">Home</button>
+        <button class="btn btn-info" routerLink="/main">Our professionals</button>
+        <div *ngIf="!loggedIn" class="dropdown">
+            <button class="btn btn-info">User
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a routerLink="/user/login">Login</a>
+                <a routerLink="/user/register">Register</a>
+            </div>
+        </div>
+        <div *ngIf="!loggedIn" class="dropdown">
+            <button class="btn btn-info">Professional
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a routerLink="/professionals/login">Login</a>
+                <a routerLink="/professionals/register">Register</a>
+            </div>
+        </div>
+        <div *ngIf="loggedIn" class="dropdown">
+            <div *ngIf="role == 'User'">
+                <button class="btn btn-info" routerLink="/user/profile/{{userUid}}">
+                    <img class="rounded" src="../../../../assets/images/programmer.png"
+                    alt="Card image cap"><i class="fa fa-caret-down m-2"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a *ngIf="loggedIn" class="profile" routerLink="/user/profile/{{userUid}}">Profile</a>
+                    <a *ngIf="loggedIn" class="btn btn-info" routerLink="/" (click)="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="loggedIn" class="dropdown">
+            <div *ngIf="role == 'Professional'">
+                <button class="btn btn-info" routerLink="/professionals/profile/{{userUid}}">
+                    <img class="rounded" src="../../../../assets/images/builder.png"
+                            alt="Card image cap"><i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a *ngIf="loggedIn" class="profile" routerLink="/professionals/profile/{{userUid}}">Profile</a>
+                    <a *ngIf="loggedIn" class="btn btn-info" routerLink="/" (click)="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<hr>

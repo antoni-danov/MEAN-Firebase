@@ -1,0 +1,66 @@
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown:hover .dropdown-content {
+        display: block;
+}
+.dropdown-content a {
+    display: block;
+    background-color: rgb(20, 196, 172);
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+    }
+.dropdown-content a:hover {
+        color: #FFFFFF;
+        background-color: #e6e214;
+        }
+ 
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+
+h1 a{
+    color: black;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Fredoka One', cursive;
+    font-size: larger;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+.buttons button{
+    background-color: rgb(20, 196, 172);
+    color: white;
+    margin-right: 25px;
+}
+section{
+    align-self: baseline;
+}
+.profile{
+  color: rgb(20, 196, 172);
+}
+hr{
+    border: 3px solid rgb(15, 96, 189);
+}
+.container{
+    height: 18%;
+}
+img{
+    height: 35px;
+    margin-right: 10px;
+}

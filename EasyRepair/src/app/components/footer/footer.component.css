@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    padding-bottom: 25px;
+}
+.socialMedias, .rightsReserved{
+    align-self: center;
+}
+.socialMedias i {
+    padding: 5px;
+
+}

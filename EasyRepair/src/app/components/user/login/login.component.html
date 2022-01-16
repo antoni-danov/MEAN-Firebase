@@ -1,0 +1,30 @@
+<div class="container">
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <form [formGroup]="form" (ngSubmit)="UserLogin(form.value)">
+        <h3>Login</h3>
+        <i class="far fa-envelope fa-lg"></i><span class="asteriks">&#42;</span>
+        <input type="text" placeholder="Email" id="email" name="email" formControlName="email">
+        <div class="alert" *ngIf="!form.get('email').valid && form.get('email').touched">
+            <div class="alert alert-danger" *ngIf="form.get('email').hasError('required')">
+                <i class="fas fa-exclamation-triangle"></i> Email is required.
+            </div>
+            <div class="alert alert-danger" *ngIf="form.get('email').hasError('pattern')">
+                <i class="fas fa-exclamation-triangle"></i> Email should be formatted as 'example@address.abc'
+            </div>
+        </div>
+        <br>
+        <i class="fas fa-lock fa-lg"></i><span class="asteriks">&#42;</span>
+        <input type="password" placeholder="Password" id="password" name="password" formControlName="password">
+        <div class="alert" *ngIf="!form.get('password').valid && form.get('password').touched">
+            <div class="alert alert-danger"*ngIf="form.get('password').hasError('required')">
+                <i class="fas fa-exclamation-triangle"></i> The password is required.
+            </div>
+            <div class="alert alert-danger" *ngIf="form.get('password').hasError('WhiteSpacesNotAllowed')">
+                <i class="fas fa-exclamation-triangle"></i> White spaces are not allowed.
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn" [disabled]=!form.valid>Login</button>
+        <div> You don't have your account yet? <a href="/user/register">Sign up</a></div>
+    </form>
+</div>
