@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 import * as firebase from 'firebase/compat/app';
 
 @Component({
@@ -12,7 +13,7 @@ export class ContactComponent implements OnInit {
   form: any;
   sendFromEmail: any;
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit() {
 
@@ -32,5 +33,8 @@ export class ContactComponent implements OnInit {
   sendMessage(messageData: any) {
     console.log(messageData);
 
+  }
+  goBack(){
+    this.location.back();
   }
 }
