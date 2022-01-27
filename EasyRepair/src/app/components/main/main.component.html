@@ -1,4 +1,10 @@
 <div class="container">
+    <div class="col-sm-6 my-3">
+        <div class="input-group">
+            <input placeholder="Search" type="text" (keyup)="getValue($event.target)"
+                class="form-control border rounded-pill" id="search">
+        </div>
+    </div>
     <section class="buttons mx-4">
         <button type="button" id="all" class="btn btn-success mx-2" (click)="reload()">All</button>
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</button>
@@ -11,8 +17,9 @@
     </section>
 </div>
 <hr>
+
 <div class="cards" *ngIf="list">
-    <div *ngFor="let item of allProfessions">
+    <div *ngFor="let item of allProfessions | instantSearch: searchValue">
         <div class="mainCard m-4">
             <div class="card" style="width: 16rem;">
                 <div class="text-center">

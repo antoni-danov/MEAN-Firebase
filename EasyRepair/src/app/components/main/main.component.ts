@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
   crafstman: 'list' | 'profession' = 'list';
   allProfessions: any;
   singleProfession: any;
+  searchValue: any;
 
   constructor(private service: ProfessionalService,
     private authService: AuthService,
@@ -23,38 +24,41 @@ export class MainComponent implements OnInit {
     this.getAll();
   }
 
-  get list(){
+  get list() {
     return this.crafstman === 'list';
   }
-  get profession(){
+  get profession() {
     return this.crafstman === 'profession';
+  }
+  getValue(event: any) {
+    this.searchValue = event.value;
   }
   async getAll() {
     return await this.service.GetAllProfessionals().then(data => {
       this.allProfessions = data;
     });
   }
-  reload(){
+  reload() {
     location.reload();
   }
-  professionsFilter(event: any){
+  professionsFilter(event: any) {
     const value = event.target.firstChild.data;
     const result = value.slice(0, -1).toLowerCase();
-    
-     this.service.GetByProfession(result).then(data =>{
+
+    this.service.GetByProfession(result).then(data => {
       this.singleProfession = data;
       this.crafstman = 'profession';
     })
-    .catch(err =>{
-      console.log(err.message);
-    });
+      .catch(err => {
+        console.log(err.message);
+      });
 
-   return this.singleProfession;
+    return this.singleProfession;
 
   }
   canActivate(value: any) {
-            
-    if(this.authService.isAuthenticated()){  
+
+    if (this.authService.isAuthenticated()) {
 
       this.router.navigateByUrl(`/professionals/profile/${value}`);
       return true;

@@ -26,6 +26,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { MainComponent } from './components/main/main.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ContactComponent } from './components/contact/contact.component';
     PageNotFoundComponent,
     FooterComponent,
     MainComponent,
-    ContactComponent
+    ContactComponent,
+    InstantSearchPipe
   ],
   imports: [
     BrowserModule,
