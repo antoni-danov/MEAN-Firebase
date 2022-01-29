@@ -11,7 +11,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CookieService } from 'ngx-cookie-service';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -56,8 +56,8 @@ import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
     AngularFireStorageModule,
     HttpClientModule
   ],
-  providers: [CookieService, 
-              AuthGuard],
+  providers: [CookieService,
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
