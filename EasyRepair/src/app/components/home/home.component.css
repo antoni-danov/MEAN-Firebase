@@ -27,3 +27,11 @@ p {
 button {
   color: white;
 }
+.container-fluid {
+  display: none;
+}
+@media all and (max-width: 450px) {
+  .container-fluid {
+    display: block;
+  }
+}

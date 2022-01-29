@@ -49,15 +49,23 @@
         </div>
     </section>
 </div>
-<span id="myBtn" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+<div class="container-fluid">
+    <section class="left-side">
+        <h1><a id="heather" href="/">Easy repair<i class="fas fa-tools"></i></a></h1>
+    </section>
+    <section>
+        <span id="myBtn" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
 
-<div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-    <div class="overlay-content">
-        <a routerLink="/" (click)="closeNav()">Home</a>
-        <a routerLink="/main" (click)="closeNav()">Our professionals</a>
-        <a routerLink="/user/login" (click)="closeNav()">Users</a>
-        <a routerLink="/professionals/login" (click)="closeNav()">Professionals</a>
-    </div>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a routerLink="/" (click)="closeNav()">Home</a>
+                <a routerLink="/main" (click)="closeNav()">Our professionals</a>
+                <a routerLink="/user/login" (click)="closeNav()">Users</a>
+                <a routerLink="/professionals/login" (click)="closeNav()">Professionals</a>
+            </div>
+        </div>
+    </section>
 </div>
+
 <hr>

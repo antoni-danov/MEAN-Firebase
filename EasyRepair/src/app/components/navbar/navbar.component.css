@@ -109,6 +109,9 @@ img {
 #myNav {
   display: none;
 }
+.container-fluid {
+  display: none;
+}
 @media all and (max-width: 450px) {
   .btn,
   .dropdown-content,
@@ -128,6 +131,9 @@ img {
     right: 35px;
   }
   .container {
+    display: none;
+  }
+  .container-fluid {
     display: block;
   }
   #heather {
