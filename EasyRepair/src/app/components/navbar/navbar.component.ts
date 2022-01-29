@@ -13,20 +13,26 @@ export class NavbarComponent implements OnInit {
 
   loggedIn: any;
   userUid: string | undefined;
-  role: string| undefined;
+  role: string | undefined;
 
   constructor(private afAuth: AngularFireAuth,
     private service: AuthService,
     private cookieService: CookieService,
-    private router: Router) { 
-    }
+    private router: Router) {
+  }
 
   ngOnInit() {
-      this.afAuth.authState.subscribe((data)=>{
-      this.userUid = this.cookieService.get('uid');      
-      this.role = this.cookieService.get('role');      
+    this.afAuth.authState.subscribe((data) => {
+      this.userUid = this.cookieService.get('uid');
+      this.role = this.cookieService.get('role');
       this.loggedIn = data;
     });
+  }
+  openNav() {
+    document.getElementById("myNav")!.style.width = "100%";
+  }
+  closeNav() {
+    document.getElementById("myNav")!.style.width = "0%";
   }
   logout() {
     this.service.SignOut();

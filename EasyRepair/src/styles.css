@@ -11,3 +11,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+@media all and (max-width: 450px) {
+  html,
+  body {
+    width: auto;
+  }
+}
