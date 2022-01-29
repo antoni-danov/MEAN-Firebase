@@ -1,4 +1,10 @@
 .container {
-    min-height: calc(100vh - 70px);
-    padding: 0px 40px;
+  min-height: calc(100vh - 70px);
+  padding: 0px 40px;
+}
+@media all and (max-width: 450px) {
+  html,
+  body {
+    width: auto;
   }
+}

@@ -54,10 +54,10 @@
 <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <div class="overlay-content">
-        <a routerLink="/">Home</a>
-        <a routerLink="/main">Our professionals</a>
-        <a routerLink="/user/login">Users</a>
-        <a routerLink="/professionals/login">Professionals</a>
+        <a routerLink="/" (click)="closeNav()">Home</a>
+        <a routerLink="/main" (click)="closeNav()">Our professionals</a>
+        <a routerLink="/user/login" (click)="closeNav()">Users</a>
+        <a routerLink="/professionals/login" (click)="closeNav()">Professionals</a>
     </div>
 </div>
 <hr>
