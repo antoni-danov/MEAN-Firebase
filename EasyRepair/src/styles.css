@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 
 html,
@@ -14,6 +13,6 @@ body {
 @media all and (max-width: 450px) {
   html,
   body {
-    width: auto;
+    width: 100%;
   }
 }
