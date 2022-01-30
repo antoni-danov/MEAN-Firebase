@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { RegisterValidators } from 'src/app/shared/utils';
 
 @Component({
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit, OnChanges {
   role: boolean = false;
   profession: boolean = false;
 
-  constructor() { }
+  constructor(private service: AuthService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -84,8 +85,17 @@ export class RegisterComponent implements OnInit, OnChanges {
       }
     }
   }
-  SignUpWithEmailAndPassword(data: any) {
-    console.log(data);
+  async SignUpWithEmailAndPassword(data: any) {
+    if (data.role === 'user') {
+      return await this.service.UserSignUpWithEmailAndPassword(data).catch(err => {
+        this.error = err;
+      });
+    } else {
+      return await this.service.ProfessionalSignUpWithEmailAndPassword(data).catch(err => {
+        this.error = err;
+      });
+    }
+
 
   }
 

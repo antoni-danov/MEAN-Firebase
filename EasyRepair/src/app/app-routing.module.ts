@@ -6,11 +6,9 @@ import { map } from 'rxjs/operators';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent as proProfile } from './components/professionals/profile/profile.component';
 import { LoginComponent as proLogin } from './components/professionals/login/login.component';
-import { RegisterComponent as profRegister } from './components/professionals/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
-import { RegisterComponent } from './components/user/register/register.component';
-import { RegisterComponent as singleRegister } from './components/register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { MainComponent } from './components/main/main.component';
@@ -21,15 +19,10 @@ const redirectLoggedInProfProfile = () => map(user => user ? ['professionals/pro
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'register', component: singleRegister },
+  { path: 'register', component: RegisterComponent },
   {
     path: 'user/login',
     component: LoginComponent
-    // data: { authGuardPipe: redirectLoggedInUserProfile }
-  },
-  {
-    path: 'user/register',
-    component: RegisterComponent,
     // data: { authGuardPipe: redirectLoggedInUserProfile }
   },
   {
@@ -41,11 +34,6 @@ const routes: Routes = [
   {
     path: 'professionals/login',
     component: proLogin,
-    // data: { authGuardPipe: redirectLoggedInProfProfile }
-  },
-  {
-    path: 'professionals/register',
-    component: profRegister,
     // data: { authGuardPipe: redirectLoggedInProfProfile }
   },
   {

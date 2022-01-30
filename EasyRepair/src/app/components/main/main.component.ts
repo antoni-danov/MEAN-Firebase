@@ -43,6 +43,8 @@ export class MainComponent implements OnInit {
   }
   professionsFilter(event: any) {
     const value = event.target.firstChild.data;
+    console.log(value);
+
     const result = value.slice(0, -1).toLowerCase();
 
     this.service.GetByProfession(result).then(data => {

@@ -5,13 +5,13 @@
     <section class="buttons">
         <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/">Home</button>
         <button class="btn btn-info" routerLink="/main">Our professionals</button>
+        <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/register">Register</button>
         <div *ngIf="!loggedIn" class="dropdown">
             <button class="btn btn-info">User
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
                 <a routerLink="/user/login">Login</a>
-                <a routerLink="/user/register">Register</a>
             </div>
         </div>
         <div *ngIf="!loggedIn" class="dropdown">
@@ -20,7 +20,6 @@
             </button>
             <div class="dropdown-content">
                 <a routerLink="/professionals/login">Login</a>
-                <a routerLink="/professionals/register">Register</a>
             </div>
         </div>
         <div *ngIf="loggedIn" class="dropdown">

@@ -225,7 +225,7 @@
                                 <option value="tiler">Tiler</option>
                                 <option value="locksmith">Locksmith</option>
                                 <option value="painter">Painter</option>
-                                <option value="heating engineer">Heating engineer</option>
+                                <option value="heat engineer">Heat engineer</option>
                                 <!-- <option value="other">Other...</option> -->
                             </select>
                             <i class="fas fa-check"
@@ -284,7 +284,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit">Register</button>
+                <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Register</button>
             </div>
         </form>
     </section>
