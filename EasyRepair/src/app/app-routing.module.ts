@@ -10,6 +10,7 @@ import { RegisterComponent as profRegister } from './components/professionals/re
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
+import { RegisterComponent as singleRegister } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { MainComponent } from './components/main/main.component';
@@ -20,6 +21,7 @@ const redirectLoggedInProfProfile = () => map(user => user ? ['professionals/pro
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'register', component: singleRegister },
   {
     path: 'user/login',
     component: LoginComponent

@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent as proLogin } from './components/professionals/login/login.component';
 import { ProfileComponent as proProfile } from './components/professionals/profile/profile.component';
 import { RegisterComponent as profRegister } from './components/professionals/register/register.component';
+import { RegisterComponent as singleRegister } from './components/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -35,6 +36,7 @@ import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
     proLogin,
     proProfile,
     profRegister,
+    singleRegister,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
