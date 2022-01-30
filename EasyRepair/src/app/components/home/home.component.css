@@ -34,4 +34,7 @@ button {
   .container-fluid {
     display: block;
   }
+  .container {
+    display: none;
+  }
 }

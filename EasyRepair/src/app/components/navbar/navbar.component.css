@@ -113,11 +113,13 @@ img {
   display: none;
 }
 @media all and (max-width: 450px) {
+  .container,
   .btn,
   .dropdown-content,
   .dropdown {
     display: none;
   }
+  .container-fluid,
   #myBtn,
   #myNav {
     display: block;
@@ -130,13 +132,10 @@ img {
     top: 15px;
     right: 35px;
   }
-  .container {
-    display: none;
-  }
-  .container-fluid {
-    display: block;
-  }
   #heather {
     text-align: center;
+  }
+  :horizontal {
+    max-width: 100%;
   }
 }
