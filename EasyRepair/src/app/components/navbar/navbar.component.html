@@ -5,23 +5,8 @@
     <section class="buttons">
         <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/">Home</button>
         <button class="btn btn-info" routerLink="/main">Our professionals</button>
+        <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/login">Login</button>
         <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/register">Register</button>
-        <div *ngIf="!loggedIn" class="dropdown">
-            <button class="btn btn-info">User
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a routerLink="/user/login">Login</a>
-            </div>
-        </div>
-        <div *ngIf="!loggedIn" class="dropdown">
-            <button class="btn btn-info">Professional
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a routerLink="/professionals/login">Login</a>
-            </div>
-        </div>
         <div *ngIf="loggedIn" class="dropdown">
             <div *ngIf="role == 'User'">
                 <button class="btn btn-info" routerLink="/user/profile/{{userUid}}">
@@ -60,9 +45,8 @@
             <div class="overlay-content">
                 <a routerLink="/" (click)="closeNav()">Home</a>
                 <a routerLink="/main" (click)="closeNav()">Our professionals</a>
+                <a routerLink="/login" (click)="closeNav()">Login</a>
                 <a routerLink="/register" (click)="closeNav()">Register</a>
-                <a routerLink="/user/login" (click)="closeNav()">Users</a>
-                <a routerLink="/professionals/login" (click)="closeNav()">Professionals</a>
             </div>
         </div>
     </section>
