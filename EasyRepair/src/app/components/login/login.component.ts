@@ -16,9 +16,8 @@ export class LoginComponent implements OnInit {
   role: boolean = false;
   profession: boolean = false;
 
-  constructor(private service: AuthService,
-    private userService: UserService,
-    private profService: ProfessionalService
+  constructor(
+    private service: AuthService
   ) { }
 
   ngOnInit() {
@@ -49,16 +48,10 @@ export class LoginComponent implements OnInit {
 
   SignInEmailAndPassword(userdata: any) {
 
-    if (userdata.role === 'user') {
-      this.service.UserSignIn(userdata).catch((err) => {
-        this.error = err.message;
-        this.form.reset();
-      });
-    } else if (userdata.role === 'professional') {
-      this.service.ProfessionalSignIn(userdata).catch((err) => {
-        this.error = err.message;
-        this.form.reset();
-      });
-    }
+    this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
+      this.error = err.message;
+      this.form.reset();
+    });
+
   }
 }

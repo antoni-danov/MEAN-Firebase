@@ -17,7 +17,7 @@ export class AuthService {
   uid: any;
   jwt: any;
   userInfo: any;
-  role?: string | void;
+  role!: string;
   user: any;
   error: any;
 
@@ -29,6 +29,28 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
+  async SigInWithEmailAndPassword(userdata: any) {
+
+    if (userdata.email && userdata.password) {
+
+      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
+        .then(data => {
+          this.uid = data.user?.uid;
+        })
+        .catch(error => {
+          this.router.navigateByUrl('/login');
+
+          throw this.error = errorMessage.fireBase(error.code);
+        });
+
+      this.jwt = await this.getIdToken();
+      this.role = userdata.role;
+
+      this.cookiesFactory(this.jwt, this.uid, this.role);
+
+      this.router.navigateByUrl('/main');
+    }
+  }
   async UserSignUpWithEmailAndPassword(userdata: any) {
 
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
@@ -69,45 +91,6 @@ export class AuthService {
     this.router.navigateByUrl('/main');
 
   }
-  async UserSignIn(userdata: any) {
-    if (userdata.email && userdata.password) {
-
-      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
-        .then(data => {
-          this.uid = data.user?.uid;
-        })
-        .catch(error => {
-          this.router.navigateByUrl('/user/login');
-
-          throw this.error = errorMessage.fireBase(error.code);
-        });
-
-      this.jwt = await this.getIdToken();
-
-      this.cookiesFactory(this.jwt, this.uid, 'User');
-
-      this.router.navigateByUrl('/main');
-    }
-
-  }
-  async ProfessionalSignIn(userdata: any) {
-    if (userdata.email && userdata.password) {
-      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
-        .then(data => {
-          this.uid = data.user?.uid;
-        })
-        .catch(error => {
-          this.router.navigateByUrl('/professionals/login');
-          throw this.error = errorMessage.fireBase(error.code);
-        });
-
-      this.jwt = await this.getIdToken();
-
-      this.cookiesFactory(this.jwt, this.uid, 'Professional');
-
-      this.router.navigateByUrl('/main');
-    }
-  }
   async SignOut() {
 
     await this.cookieService.delete('JWT');
@@ -130,7 +113,6 @@ export class AuthService {
     this.cookieService.set('JWT', jwt);
     this.cookieService.set('uid', uid);
     this.cookieService.set('role', role);
-    this.cookieService.getAll();
   }
   async getIdToken() {
 

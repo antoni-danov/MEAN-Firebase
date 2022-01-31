@@ -5,9 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent as proProfile } from './components/professionals/profile/profile.component';
-import { LoginComponent as proLogin } from './components/professionals/login/login.component';
-import { LoginComponent as singleLoginComponent } from './components/login/login.component';
-import { LoginComponent } from './components/user/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -21,22 +19,12 @@ const redirectLoggedInProfProfile = () => map(user => user ? ['professionals/pro
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: singleLoginComponent },
-  {
-    path: 'user/login',
-    component: LoginComponent
-    // data: { authGuardPipe: redirectLoggedInUserProfile }
-  },
+  { path: 'login', component: LoginComponent },
   {
     path: 'user/profile/:id',
     component: ProfileComponent,
     canActivate: [AuthGuard, AngularFireAuthGuard],
     // data: { authGuardPipe: unathorizeRedirect }
-  },
-  {
-    path: 'professionals/login',
-    component: proLogin,
-    // data: { authGuardPipe: redirectLoggedInProfProfile }
   },
   {
     path: 'professionals/profile/:id',

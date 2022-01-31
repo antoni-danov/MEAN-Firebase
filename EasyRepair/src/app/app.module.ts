@@ -15,11 +15,9 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent as proLogin } from './components/professionals/login/login.component';
-import { LoginComponent as singleLogin } from './components/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent as proProfile } from './components/professionals/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -32,17 +30,14 @@ import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
   declarations: [
     AppComponent,
     NavbarComponent,
-    RegisterComponent,
-    singleLogin,
-    proLogin,
-    proProfile,
     HomeComponent,
+    MainComponent,
     LoginComponent,
     RegisterComponent,
+    proProfile,
     ProfileComponent,
     PageNotFoundComponent,
     FooterComponent,
-    MainComponent,
     ContactComponent,
     InstantSearchPipe
   ],
