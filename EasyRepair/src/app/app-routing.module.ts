@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent as proProfile } from './components/professionals/profile/profile.component';
 import { LoginComponent as proLogin } from './components/professionals/login/login.component';
+import { LoginComponent as singleLoginComponent } from './components/login/login.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -20,6 +21,7 @@ const redirectLoggedInProfProfile = () => map(user => user ? ['professionals/pro
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: singleLoginComponent },
   {
     path: 'user/login',
     component: LoginComponent

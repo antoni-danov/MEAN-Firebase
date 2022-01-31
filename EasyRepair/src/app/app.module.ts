@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent as proLogin } from './components/professionals/login/login.component';
+import { LoginComponent as singleLogin } from './components/login/login.component';
 import { ProfileComponent as proProfile } from './components/professionals/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
@@ -32,6 +33,7 @@ import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
     AppComponent,
     NavbarComponent,
     RegisterComponent,
+    singleLogin,
     proLogin,
     proProfile,
     HomeComponent,
