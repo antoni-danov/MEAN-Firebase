@@ -1,4 +1,4 @@
-<div class="profile" *ngIf="profile">
+<div class="profile profile mt-5" *ngIf="profile">
     <div class="container" *ngIf="userInfo">
         <div class="row">
             <div style="width: 14rem;">
@@ -40,7 +40,8 @@
                     <p><strong>City:</strong> {{userInfo.address.city | titlecase}}</p>
                 </div>
                 <div class="col-lg-10">
-                    <button type="button" class="btn btn-warning mt-4" (click)="setDefaultForm()">Update your profile</button>
+                    <button type="button" class="btn btn-warning mt-4" (click)="setDefaultForm()">Update your
+                        profile</button>
                 </div>
             </div>
         </div>

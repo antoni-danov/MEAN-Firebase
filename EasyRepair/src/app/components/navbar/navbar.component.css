@@ -122,6 +122,11 @@ img {
   #myNav {
     display: block;
   }
+  .container-fluid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   .overlay a {
     font-size: 20px;
   }

@@ -33,12 +33,12 @@
         </div>
     </section>
 </div>
-<div class="container-fluid">
-    <section class="left-side">
-        <h1><a id="heather" href="/">Easy repair<i class="fas fa-tools"></i></a></h1>
-        <div *ngIf="loggedIn" class="dropdown pull-right" id="profileSection">
+<div class="container-fluid mb-5">
+    <section>
+        <h1 class="left-side"><a id="heather" href="/">Easy repair<i class="fas fa-tools"></i></a></h1>
+        <div *ngIf="loggedIn" class="dropdown" id="profileSection">
             <div *ngIf="role == 'User'">
-                <button id="profileSection" class="btn btn-info" routerLink="/user/profile/{{userUid}}">
+                <button id="profileSection" class="btn btn-info">
                     <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap"><i
                         class="fa fa-caret-down m-2"></i>
                 </button>
@@ -48,9 +48,9 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="loggedIn" class="dropdown pull-right">
+        <div *ngIf="loggedIn" class="dropdown">
             <div *ngIf="role == 'Professional'">
-                <button class="btn btn-info" routerLink="/professionals/profile/{{userUid}}">
+                <button class="btn btn-info">
                     <img class="rounded" src="../../../../assets/images/builder.png" alt="Card image cap"><i
                         class="fa fa-caret-down"></i>
                 </button>
@@ -75,5 +75,3 @@
         </div>
     </section>
 </div>
-
-<hr>
