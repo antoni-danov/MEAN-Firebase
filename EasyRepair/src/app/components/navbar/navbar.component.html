@@ -7,9 +7,9 @@
         <button class="btn btn-info" routerLink="/main">Our professionals</button>
         <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/login">Login</button>
         <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/register">Register</button>
-        <div *ngIf="loggedIn" class="dropdown" id="profileSection">
+        <div *ngIf="loggedIn" class="dropdown">
             <div *ngIf="role == 'User'">
-                <button id="profileSection" class="btn btn-info" routerLink="/user/profile/{{userUid}}">
+                <button class="btn btn-info" routerLink="/user/profile/{{userUid}}">
                     <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap"><i
                         class="fa fa-caret-down m-2"></i>
                 </button>
