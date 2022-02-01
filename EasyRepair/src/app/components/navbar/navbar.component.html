@@ -39,8 +39,8 @@
         <div *ngIf="loggedIn" class="dropdown" id="profileSection">
             <div *ngIf="role == 'User'">
                 <button class="btn btn-info">
-                    <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap"><i
-                        class="fa fa-caret-down m-2"></i>
+                    <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">
+                    <i class="fa fa-caret-down m-2"></i>
                 </button>
                 <div class="dropdown-content">
                     <a *ngIf="loggedIn" class="profile" routerLink="/user/profile/{{userUid}}">Profile</a>
@@ -52,7 +52,7 @@
             <div *ngIf="role == 'Professional'">
                 <button class="btn btn-info">
                     <img class="rounded" src="../../../../assets/images/builder.png" alt="Card image cap">
-                    <!-- <i class="fa fa-caret-down"></i> -->
+                    <i class="fa fa-caret-down"></i>
                 </button>
                 <div id="profileLinks" class="dropdown-content">
                     <a *ngIf="loggedIn" class="profile" routerLink="/professionals/profile/{{userUid}}">Profile</a>
