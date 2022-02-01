@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { ProfessionalService } from 'src/app/services/professionals/professional.service';
-import { UserService } from 'src/app/services/user/user.service';
 import { RegisterValidators } from 'src/app/shared/utils';
 
 @Component({
