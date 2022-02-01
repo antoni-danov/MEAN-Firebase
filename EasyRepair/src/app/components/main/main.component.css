@@ -60,9 +60,6 @@ img {
   display: none;
 }
 @media all and (max-width: 450px) {
-  /* .btn {
-    display: none;
-  } */
   .mobileContainer,
   .mobileProfession {
     display: block;

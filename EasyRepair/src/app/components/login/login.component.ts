@@ -54,4 +54,24 @@ export class LoginComponent implements OnInit {
     });
 
   }
+<<<<<<< HEAD
+=======
+  // onDigitInput(event: any) {
+
+  //   let element;
+  //   if (event.code !== 'Backspace') {
+  //     element = event.srcElement.nextElementSibling;
+  //   }
+  //   if (event.code === 'Backspace') {
+  //     element = event.srcElement.previousElementSibling;
+  //   }
+  //   if (element == null) {
+
+  //     return;
+  //   } else {
+
+  //     element.focus();
+  //   }
+  // }
+>>>>>>> f15ef3b848092ef444e283f92eb9b42ae363f385
 }
