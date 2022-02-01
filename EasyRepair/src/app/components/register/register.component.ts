@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { RegisterValidators } from 'src/app/shared/utils';
 
@@ -14,9 +15,16 @@ export class RegisterComponent implements OnInit, OnChanges {
   role: boolean = false;
   profession: boolean = false;
 
-  constructor(private service: AuthService) { }
+  constructor(
+    private service: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    if (this.service.isAuthenticated()) {
+      this.router.navigateByUrl('/main');
+    };
+
     this.form = new FormGroup({
 
       role: new FormControl(''),
@@ -67,8 +75,7 @@ export class RegisterComponent implements OnInit, OnChanges {
         RegisterValidators.equalPasswords('password'),
         RegisterValidators.WhiteSpacesNotAllowed
       ]))
-    }
-    );
+    });
   }
   ngOnChanges() {
     this.role;
