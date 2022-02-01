@@ -33,12 +33,12 @@
         </div>
     </section>
 </div>
-<div class="container-fluid mb-5">
+<div class="container-fluid">
     <section>
-        <h1 class="left-side"><a id="heather" href="/">Easy repair<i class="fas fa-tools"></i></a></h1>
+        <h1 class="left-side m-3"><a id="heather" href="/">Easy repair<i class="fas fa-tools"></i></a></h1>
         <div *ngIf="loggedIn" class="dropdown" id="profileSection">
             <div *ngIf="role == 'User'">
-                <button id="profileSection" class="btn btn-info">
+                <button class="btn btn-info">
                     <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap"><i
                         class="fa fa-caret-down m-2"></i>
                 </button>
@@ -51,10 +51,10 @@
         <div *ngIf="loggedIn" class="dropdown">
             <div *ngIf="role == 'Professional'">
                 <button class="btn btn-info">
-                    <img class="rounded" src="../../../../assets/images/builder.png" alt="Card image cap"><i
-                        class="fa fa-caret-down"></i>
+                    <img class="rounded" src="../../../../assets/images/builder.png" alt="Card image cap">
+                    <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
-                <div class="dropdown-content">
+                <div id="profileLinks" class="dropdown-content">
                     <a *ngIf="loggedIn" class="profile" routerLink="/professionals/profile/{{userUid}}">Profile</a>
                     <a *ngIf="loggedIn" class="btn btn-info" routerLink="/" (click)="logout()">Logout</a>
                 </div>

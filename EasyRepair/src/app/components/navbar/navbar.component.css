@@ -122,6 +122,15 @@ img {
   #myNav {
     display: block;
   }
+  #myBtn {
+    margin-right: 15px;
+  }
+  #profileSection,
+  div,
+  button {
+    background-color: transparent;
+    margin-left: 5px;
+  }
   .container-fluid {
     display: flex;
     flex-direction: row;

@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
   closeNav() {
     document.getElementById("myNav")!.style.width = "0%";
   }
+
   logout() {
     this.service.SignOut();
     return this.router.navigateByUrl('');
