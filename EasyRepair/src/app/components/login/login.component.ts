@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ProfessionalService } from 'src/app/services/professionals/professional.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { RegisterValidators } from 'src/app/shared/utils';
->>>>>>> da4e1d450b2e8f479350495b77948b6a0d67981f
 
 @Component({
   selector: 'app-login',
@@ -14,14 +11,6 @@ import { RegisterValidators } from 'src/app/shared/utils';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-<<<<<<< HEAD
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   form: any;
   error!: string;
   role: boolean = false;
@@ -65,5 +54,4 @@ export class LoginComponent implements OnInit {
     });
 
   }
->>>>>>> da4e1d450b2e8f479350495b77948b6a0d67981f
 }
