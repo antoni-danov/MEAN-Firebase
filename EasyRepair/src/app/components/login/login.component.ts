@@ -60,8 +60,6 @@ export class LoginComponent implements OnInit {
     });
 
   }
-<<<<<<< HEAD
-=======
   // onDigitInput(event: any) {
 
   //   let element;
@@ -79,5 +77,4 @@ export class LoginComponent implements OnInit {
   //     element.focus();
   //   }
   // }
->>>>>>> f15ef3b848092ef444e283f92eb9b42ae363f385
 }
