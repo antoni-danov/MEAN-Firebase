@@ -79,13 +79,85 @@
         </form>
     </section>
 </div>
+<div class="container-fluid">
+    <div class="section">
+        <div *ngIf="error" class="alert alert-danger mx-6">{{error}}</div>
+        <h2 class="text-center mt-4">Login</h2>
+    </div>
+    <section class="formComplet">
+        <form class="form" [formGroup]="form" (ngSubmit)="SignInEmailAndPassword(form.value)">
+            <h4 class="text-center mt-3">Choose your role:</h4>
+            <hr>
+            <div class="role my-4">
+                <ul>
+                    <li> <input class="form-control" type="radio" name="role" value="User" id="userMobile"
+                            (click)="raidoValue($event)" formControlName="role">
 
-<!-- <div class="mb-2 digit-insert d-flex align-items-center">
-    <input #digitOne type="text" minlength="3" (keyup)="onDigitInput($event)" />
-    <input #digitTwo type="text" maxlength="1" (keyup)="onDigitInput($event)" />
-    <input #digitThree type="text" maxlength="2" (keyup)="onDigitInput($event)" />
+                        <label for="user"><img class="col-sm-4 rounded text-center mx-5"
+                                src="../../../../assets/images/programmer.png" alt="Card image cap"></label>
+                    </li>
+                    <li> <input class="form-control" type="radio" name="role" value="Professional"
+                            id="professionalMobile" (click)="raidoValue($event)" formControlName="role">
+                        <label for="professional"><img class="col-sm-4 rounded float-left mx-5"
+                                src="../../../../assets/images/builder.png" alt="Card image cap"></label>
+                    </li>
+                </ul>
 
-    <input #digitFour type="text" maxlength="1" (keyup)="onDigitInput($event)" />
-    <input #digitFive type="text" maxlength="1" (keyup)="onDigitInput($event)" />
-    <input #digitSix type="text" maxlength="1" (keyup)="onDigitInput($event)" />
-</div> -->
+            </div>
+            <div *ngIf="role" class="mainForm">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="far fa-envelope fa-lg"></i><span class="asteriks">&#42;</span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Email" id="emailMobile" name="email"
+                                formControlName="email">
+                            <i class="fas fa-check" *ngIf="form.get('email').valid && form.get('email').touched"
+                                [ngClass]="{checked: form.get('email').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('email').valid && form.get('email').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('email').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> Email is required.
+                                </div>
+                                <div class="alert alert-danger" *ngIf="form.get('email').hasError('pattern')">
+                                    <i class="fas fa-exclamation-triangle"></i> Email should be formatted as
+                                    'example@address.abc'
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-key fa-lg"></i><span class="asteriks">&#42;</span>
+                            </div>
+                        </div>
+                        <input class="form-control" type="password" id="passwordMobile" placeholder="Password"
+                            name="password" formControlName="password">
+                        <i class="fas fa-check" *ngIf="form.get('password').valid && form.get('password').touched"
+                            [ngClass]="{checked: form.get('password').valid}"></i>
+                    </div>
+                    <div class="alert">
+                        <div *ngIf="!form.get('password').valid && form.get('password').touched">
+                            <div class="alert alert-danger" *ngIf="form.get('password').hasError('required')">
+                                <i class="fas fa-exclamation-triangle"></i> The password is required.
+                            </div>
+                            <div class="alert alert-danger" *ngIf="form.get('password').hasError('minlength')">
+                                <i class="fas fa-exclamation-triangle"></i> The password should be at least 8
+                                characters
+                                long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Login</button>
+            </div>
+        </form>
+    </section>
+</div>

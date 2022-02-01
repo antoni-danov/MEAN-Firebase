@@ -5,6 +5,9 @@
   height: 50px;
   padding-bottom: 25px;
 }
+.container-fluid {
+  display: none;
+}
 .socialMedias,
 .rightsReserved {
   align-self: center;
@@ -15,4 +18,27 @@
 i {
   color: black;
   text-align: center;
+}
+@media all and (max-width: 450px) {
+  .container {
+    display: none;
+  }
+  .container-fluid {
+    display: block;
+    margin-top: -80px;
+  }
+  .socialMedias,
+  .rightsReserved {
+    align-self: center;
+  }
+  .socialMedias button {
+    margin-left: 20%;
+  }
+  .socialMedias i {
+    padding: 5px;
+  }
+  i {
+    color: black;
+    text-align: center;
+  }
 }
