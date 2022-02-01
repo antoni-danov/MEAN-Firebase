@@ -24,13 +24,11 @@ const routes: Routes = [
     path: 'user/profile/:id',
     component: ProfileComponent,
     canActivate: [AuthGuard, AngularFireAuthGuard],
-    // data: { authGuardPipe: unathorizeRedirect }
   },
   {
     path: 'professionals/profile/:id',
     component: proProfile,
     canActivate: [AuthGuard, AngularFireAuthGuard],
-    // data: { authGuardPipe: unathorizeRedirect }
   },
   {
     path: 'main', component: MainComponent
