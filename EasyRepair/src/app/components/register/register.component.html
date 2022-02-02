@@ -289,3 +289,294 @@
         </form>
     </section>
 </div>
+<div class="container-fluid">
+    <div class="section">
+        <div *ngIf="error" class="alert alert-danger mx-6">{{error}}</div>
+        <h2 class="text-center">Register</h2>
+    </div>
+    <section class="formComplet">
+        <form class="form" [formGroup]="form" (ngSubmit)="SignUpWithEmailAndPassword(form.value)">
+            <h4>Choose your role:</h4>
+            <div class="role my-4">
+                <ul>
+                    <li> <input class="form-control" type="radio" name="role" value="user" id="mobileUser"
+                            (click)="raidoValue($event)" formControlName="role">
+
+                        <label for="user"><img class="col-sm-4 rounded text-center mx-4"
+                                src="../../../../assets/images/programmer.png" alt="Card image cap"></label>
+                    </li>
+                    <li> <input class="form-control" type="radio" name="role" value="professional"
+                            id="mobileProfessional" (click)="raidoValue($event)" formControlName="role">
+                        <label for="professional"><img class="col-sm-4 rounded float-left mx-4"
+                                src="../../../../assets/images/builder.png" alt="Card image cap"></label>
+                    </li>
+                </ul>
+
+            </div>
+            <div *ngIf="role" class="mainForm">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user fa-lg"></i><span
+                                        class="asteriks">&#42;</span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="text" placeholder="First name" id="mobileFirstname"
+                                name="firstname" formControlName="firstname">
+                            <i class="fas fa-check" *ngIf="form.get('firstname').valid && form.get('firstname').touched"
+                                [ngClass]="{checked: form.get('firstname').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('firstname').valid && form.get('firstname').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('firstname').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> First name is required.
+                                </div>
+                                <div class="alert alert-danger" *ngIf="form.get('firstname').hasError('minlength')">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p> First name should be at least 2 characters long.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user fa-lg"></i><span
+                                        class="asteriks">&#42;</span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Last name" id="mobileLastname"
+                                name="lastname" formControlName="lastname">
+                            <i class="fas fa-check" *ngIf="form.get('lastname').valid && form.get('lastname').touched"
+                                [ngClass]="{checked: form.get('lastname').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('lastname').valid && form.get('lastname').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('lastname').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> Last name is required.
+                                </div>
+                                <div class="alert alert-danger" *ngIf="form.get('lastname').hasError('minlength')">
+                                    <i class="fas fa-exclamation-triangle"></i> Last name should be at least 2
+                                    characters
+                                    long.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="far fa-envelope fa-lg"></i><span class="asteriks">&#42;</span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Email" id="mobileEmail" name="email"
+                                formControlName="email">
+                            <i class="fas fa-check" *ngIf="form.get('email').valid && form.get('email').touched"
+                                [ngClass]="{checked: form.get('email').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('email').valid && form.get('email').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('email').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> Email is required.
+                                </div>
+                                <div class="alert alert-danger" *ngIf="form.get('email').hasError('pattern')">
+                                    <i class="fas fa-exclamation-triangle"></i> Email should be formatted as
+                                    'example@address.abc'
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-phone fa-lg"></i><span class="asteriks">&#42;</span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="number" placeholder="Phone number" id="mobilePhonenumber"
+                                name="phonenumber" formControlName="phonenumber">
+                            <i class="fas fa-check"
+                                *ngIf="form.get('phonenumber').valid && form.get('phonenumber').touched"
+                                [ngClass]="{checked: form.get('phonenumber').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('phonenumber').valid && form.get('phonenumber').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('phonenumber').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> The phone number is required.
+                                </div>
+                                <div class="alert alert-danger" *ngIf="form.get('phonenumber').hasError('maxLength')">
+                                    <i class="fas fa-exclamation-triangle"></i> The phone number should be maximum 10
+                                    characters
+                                    long.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-city fa-lg"></i><span class="asteriks">&#42; </span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="text" placeholder="City" id="mobileCity" name="city"
+                                formControlName="city">
+                            <i class="fas fa-check" *ngIf="form.get('city').valid && form.get('city').touched"
+                                [ngClass]="{checked: form.get('city').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('city').valid && form.get('city').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('city').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> The city name is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-envelope fa-lg"></i><span class="asteriks">&#42; </span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="number" placeholder="ZIP Code" id="mobileZipCode"
+                                name="zipCode" formControlName="zipCode">
+                            <i class="fas fa-check" *ngIf="form.get('zipCode').valid && form.get('zipCode').touched"
+                                [ngClass]="{checked: form.get('zipCode').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('zipCode').valid && form.get('zipCode').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('zipCode').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> The ZIP code is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-map-marker-alt fa-lg"></i><span class="asteriks">&#42; </span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="number" placeholder="Number" id="mobileStrNumber"
+                                name="strNumber" formControlName="strNumber">
+                            <i class="fas fa-check" *ngIf="form.get('strNumber').valid && form.get('strNumber').touched"
+                                [ngClass]="{checked: form.get('strNumber').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('strNumber').valid && form.get('strNumber').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('strNumber').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> The street number is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-map-marked-alt fa-lg"></i><span class="asteriks">&#42; </span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Address" id="mobileAddressLine"
+                                name="addressLine" formControlName="addressLine">
+                            <i class="fas fa-check"
+                                *ngIf="form.get('addressLine').valid && form.get('addressLine').touched"
+                                [ngClass]="{checked: form.get('addressLine').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('addressLine').valid && form.get('addressLine').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('addressLine').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> The address is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="profession" class="col-lg-12">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-tools fa-lg"></i><span class="asteriks"> &#42; </span>
+                                </div>
+                            </div>
+
+                            <select class="form-control profession" id="mobileProfession" name="profession"
+                                formControlName="profession">
+                                <option value="" selected>Choose your profession</option>
+                                <option value="plumber">Plumber</option>
+                                <option value="electrician">Electrician</option>
+                                <option value="carpenter">Carpenter</option>
+                                <option value="tailor">Tailor</option>
+                                <option value="locksmith">Locksmith</option>
+                                <option value="painter">Painter</option>
+                                <option value="heat engineer">Heat engineer</option>
+                                <!-- <option value="other">Other...</option> -->
+                            </select>
+                            <i class="fas fa-check"
+                                *ngIf="form.get('profession').valid && form.get('profession').touched"
+                                [ngClass]="{checked: form.get('profession').valid}"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-key fa-lg"></i><span class="asteriks">&#42;</span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="password" id="mobilePassword" placeholder="Password"
+                                name="password" formControlName="password">
+                            <i class="fas fa-check" *ngIf="form.get('password').valid && form.get('password').touched"
+                                [ngClass]="{checked: form.get('password').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('password').valid && form.get('password').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('password').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> The password is required.
+                                </div>
+                                <div class="alert alert-danger" *ngIf="form.get('password').hasError('minlength')">
+                                    <i class="fas fa-exclamation-triangle"></i> The password should be at least 8
+                                    characters
+                                    long.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-key fa-lg"></i><span class="asteriks">&#42;</span>
+                                </div>
+                            </div>
+                            <input class="form-control" type="password" id="mobileRepeatpass"
+                                placeholder="Repeat password" name="repeatpass" formControlName="repeatpass">
+                            <i class="fas fa-check"
+                                *ngIf="form.get('repeatpass').valid && form.get('repeatpass').touched"
+                                [ngClass]="{checked: form.get('repeatpass').valid}"></i>
+                        </div>
+                        <div class="alert">
+                            <div *ngIf="!form.get('repeatpass').valid && form.get('repeatpass').touched">
+                                <div class="alert alert-danger" *ngIf="form.get('repeatpass').hasError('required')">
+                                    <i class="fas fa-exclamation-triangle"></i> The field is required.
+                                </div>
+                                <div class="alert alert-danger"
+                                    *ngIf="form.get('repeatpass').hasError('equalPasswords')">
+                                    <i class="fas fa-exclamation-triangle"></i> The passwords doesn't match!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary mb-5" type="submit" [disabled]="form.invalid">Register</button>
+            </div>
+        </form>
+    </section>
+</div>
