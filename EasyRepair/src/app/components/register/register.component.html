@@ -292,11 +292,12 @@
 <div class="container-fluid">
     <div class="section">
         <div *ngIf="error" class="alert alert-danger mx-6">{{error}}</div>
-        <h2 class="text-center">Register</h2>
+        <h2 class="text-center mt-4">Register</h2>
     </div>
     <section class="formComplet">
         <form class="form" [formGroup]="form" (ngSubmit)="SignUpWithEmailAndPassword(form.value)">
-            <h4>Choose your role:</h4>
+            <h4 class="text-center mt-3">Choose your role:</h4>
+            <hr>
             <div class="role my-4">
                 <ul>
                     <li> <input class="form-control" type="radio" name="role" value="user" id="mobileUser"
