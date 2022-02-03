@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   allProfessions: any;
   singleProfession: any;
   searchValue: any;
+  spiner: boolean = true;
 
   constructor(private service: ProfessionalService,
     private authService: AuthService,
@@ -36,6 +37,7 @@ export class MainComponent implements OnInit {
   async getAll() {
     return await this.service.GetAllProfessionals().then(data => {
       this.allProfessions = data;
+      this.spiner = false;
     });
   }
   reload() {
@@ -43,7 +45,6 @@ export class MainComponent implements OnInit {
   }
   professionsFilter(event: any) {
     const value = event.target.firstChild.data;
-    console.log(value);
 
     const result = value.slice(0, -1).toLowerCase();
 
@@ -66,7 +67,7 @@ export class MainComponent implements OnInit {
       return true;
     }
 
-    this.router.navigateByUrl('/user/login');
+    this.router.navigateByUrl('/login');
 
     return false;
   }
