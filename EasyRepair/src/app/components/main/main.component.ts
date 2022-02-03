@@ -67,7 +67,7 @@ export class MainComponent implements OnInit {
       return true;
     }
 
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/register');
 
     return false;
   }
