@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.form = new FormGroup({
-      role: new FormControl(''),
+      role: new FormControl('', Validators.required),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[A-za-z0-9._%+-]+@[a-z]{3,6}\.[a-z]{2,4}$'),
@@ -50,9 +50,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  SignInEmailAndPassword(userdata: any) {
+  async SignInEmailAndPassword(userdata: any) {
 
-    this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
+    await this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
       this.error = err.message;
       this.form.reset();
     });

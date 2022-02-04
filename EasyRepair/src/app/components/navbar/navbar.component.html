@@ -7,11 +7,11 @@
         <button class="btn btn-info" routerLink="/main">Our professionals</button>
         <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/login">Login</button>
         <button *ngIf="!loggedIn" class="btn btn-info" routerLink="/register">Register</button>
-        <div *ngIf="loggedIn" class="dropdown">
+        <div *ngIf="loggedIn" class="dropdown" id="profileSection">
             <div *ngIf="role == 'User'">
-                <button class="btn btn-info" routerLink="/user/profile/{{userUid}}">
-                    <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap"><i
-                        class="fa fa-caret-down m-2"></i>
+                <button class="btn btn-info">
+                    <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">
+                    <i class="fa fa-caret-down m-2"></i>
                 </button>
                 <div class="dropdown-content">
                     <a *ngIf="loggedIn" class="profile" routerLink="/user/profile/{{userUid}}">Profile</a>
@@ -21,11 +21,11 @@
         </div>
         <div *ngIf="loggedIn" class="dropdown">
             <div *ngIf="role == 'Professional'">
-                <button class="btn btn-info" routerLink="/professionals/profile/{{userUid}}">
-                    <img class="rounded" src="../../../../assets/images/builder.png" alt="Card image cap"><i
-                        class="fa fa-caret-down"></i>
+                <button class="btn btn-info">
+                    <img class="rounded" src="../../../../assets/images/builder.png" alt="Card image cap">
+                    <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content">
+                <div id="profileLinks" class="dropdown-content">
                     <a *ngIf="loggedIn" class="profile" routerLink="/professionals/profile/{{userUid}}">Profile</a>
                     <a *ngIf="loggedIn" class="btn btn-info" routerLink="/" (click)="logout()">Logout</a>
                 </div>

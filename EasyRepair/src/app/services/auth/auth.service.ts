@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/compat/app';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../user/user.service';
 import { ProfessionalService } from '../professionals/professional.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -14,45 +13,21 @@ import { errorMessage } from 'src/app/shared/errorMessageFactory';
 export class AuthService {
 
   isVisible: boolean = false;
-  uid: any;
-  jwt: any;
+  uid!: string;
+  jwt!: string;
   userInfo: any;
   role!: string;
   user: any;
-  error: any;
+  error!: string;
 
   constructor(private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
     private router: Router,
     private userService: UserService,
     private profService: ProfessionalService,
     private cookieService: CookieService
   ) { }
 
-  async SigInWithEmailAndPassword(userdata: any) {
-
-    if (userdata.email && userdata.password) {
-
-      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
-        .then(data => {
-          this.uid = data.user?.uid;
-        })
-        .catch(error => {
-          this.router.navigateByUrl('/login');
-
-          throw this.error = errorMessage.fireBase(error.code);
-        });
-
-      this.jwt = await this.getIdToken();
-      this.role = userdata.role;
-
-      this.cookiesFactory(this.jwt, this.uid, this.role);
-
-      this.router.navigateByUrl('/main');
-    }
-  }
-  async UserSignUpWithEmailAndPassword(userdata: any) {
-
+  async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
       .catch(error => {
         throw this.error = errorMessage.fireBase(error.code);
@@ -61,35 +36,45 @@ export class AuthService {
       displayName: `${userdata.firstname} ${userdata.lastname}`
     });
     userdata.uid = result.user?.uid;
+    console.log(userdata);
 
-    await this.userService.CreateUserData(userdata);
+    if (userdata.role === 'user') {
+      await this.userService.CreateUserData(userdata);
+    } else if (userdata.role === 'professional') {
+      await this.profService.CreateProfessionalData(userdata);
+    }
 
     await firebase.default.auth().currentUser?.getIdToken()
       .then(data => {
         this.jwt = data;
       });
 
-    this.cookiesFactory(this.jwt, userdata.uid, 'User');
+    this.cookiesFactory(this.jwt, userdata.uid, userdata.role);
 
     this.router.navigateByUrl('/main');
-
   }
-  async ProfessionalSignUpWithEmailAndPassword(userdata: any) {
+  async SigInWithEmailAndPassword(userdata: any) {
 
-    const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
-      .catch(error => {
-        throw this.error = errorMessage.fireBase(error.code);
-      });
-    userdata.uid = result.user?.uid;
+    if (userdata.email && userdata.password) {
 
-    await this.profService.CreateProfessionalData(userdata);
+      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
+        .then(data => {
+          this.uid = data.user?.uid!;
+        })
+        .catch(error => {
+          this.router.navigateByUrl('/login');
 
-    this.getIdToken();
+          throw this.error = errorMessage.fireBase(error.code);
+        });
 
-    this.cookiesFactory(this.jwt, userdata.uid, 'Professional');
+      const currentJwt = await this.getIdToken();
+      this.jwt = currentJwt!;
+      this.role = userdata.role;
 
-    this.router.navigateByUrl('/main');
+      this.cookiesFactory(this.jwt, this.uid, this.role);
 
+      this.router.navigateByUrl('/main');
+    }
   }
   async SignOut() {
 

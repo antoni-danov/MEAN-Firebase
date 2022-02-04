@@ -93,17 +93,10 @@ export class RegisterComponent implements OnInit, OnChanges {
     }
   }
   async SignUpWithEmailAndPassword(data: any) {
-    if (data.role === 'user') {
-      return await this.service.UserSignUpWithEmailAndPassword(data).catch(err => {
-        this.error = err;
-      });
-    } else {
-      return await this.service.ProfessionalSignUpWithEmailAndPassword(data).catch(err => {
-        this.error = err;
-      });
-    }
 
-
+    await this.service.SignUpWithEmailAndPassword(data).catch(err => {
+      this.error = err;
+    });
   }
 
 }

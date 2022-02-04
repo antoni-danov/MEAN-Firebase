@@ -20,16 +20,15 @@ export class RegisterValidators {
         const isValid = !isWhiteSpace;
         return isValid ? null : { 'WhiteSpacesNotAllowed': true };
     }
-    static async CheckForEmail(control: FormControl){ //TODO
+    static async CheckForEmail(control: FormControl) { //TODO
 
-    var check: boolean = false;
+        var check: boolean = false;
 
-    var result = await emailVerification(control.value.trim()).then(doc => {
-        check = doc;
-    });
-    
-    return check ? { 'CheckForEmail': true } : null;
+        var result = await emailVerification(control.value.trim()).then(doc => {
+            check = doc;
+        });
 
-}
-    
+        return check ? { 'CheckForEmail': true } : null;
+
+    }
 }
