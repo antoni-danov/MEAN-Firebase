@@ -59,24 +59,29 @@ img {
 .mobileProfession {
   display: none;
 }
-/* .spiner {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  top: 50%;
-  left: 50%;
-  margin-left: -50px;
-  margin-top: -50px;
-  background-size: 100%;
-} */
+
 @media all and (max-width: 450px) {
   .mobileContainer,
   .mobileProfession {
     display: block;
   }
   .container,
-  hr,
   cards {
     display: none;
+  }
+  .dropdown {
+    color: white;
+  }
+  .search {
+    margin-right: 5px;
+  }
+  .col-sm-6 {
+    margin: 0;
+  }
+  .allCards,
+  .mainCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
