@@ -36,11 +36,10 @@ export class AuthService {
       displayName: `${userdata.firstname} ${userdata.lastname}`
     });
     userdata.uid = result.user?.uid;
-    console.log(userdata);
 
-    if (userdata.role === 'user') {
+    if (userdata.role === 'User') {
       await this.userService.CreateUserData(userdata);
-    } else if (userdata.role === 'professional') {
+    } else if (userdata.role === 'Professional') {
       await this.profService.CreateProfessionalData(userdata);
     }
 
