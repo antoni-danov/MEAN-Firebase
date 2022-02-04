@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { RegisterValidators } from 'src/app/shared/utils';
+import { errorMessage } from 'src/app/shared/errorMessageFactory';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit, OnChanges {
 
     this.form = new FormGroup({
 
-      role: new FormControl(''),
+      role: new FormControl('', Validators.required),
       firstname: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2),
@@ -41,7 +42,6 @@ export class RegisterComponent implements OnInit, OnChanges {
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[A-za-z0-9._%+-]+@[a-z]{3,6}\.[a-z]{2,4}$'),
-        // // RegisterValidators.CheckForEmail //TODO
       ])),
       phonenumber: new FormControl('', Validators.compose([
         Validators.required,
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit, OnChanges {
       zipCode: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      profession: new FormControl('', Validators.required),
+      profession: new FormControl(''),
       // yourprofession!: new FormControl('', Validators.required),
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -95,7 +95,7 @@ export class RegisterComponent implements OnInit, OnChanges {
   async SignUpWithEmailAndPassword(data: any) {
 
     await this.service.SignUpWithEmailAndPassword(data).catch(err => {
-      this.error = err;
+      this.error = errorMessage.fireBase(err.code);
     });
   }
 

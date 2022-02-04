@@ -16,6 +16,9 @@
   -webkit-box-shadow: 6px 5px 13px 6px rgba(0, 0, 0, 0.73);
   box-shadow: 6px 5px 13px 6px rgba(0, 0, 0, 0.73);
 }
+.alert {
+  color: red;
+}
 label input {
   width: 0;
 }
