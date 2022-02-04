@@ -1,19 +1,26 @@
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: 50px;
-  padding-bottom: 25px;
+  justify-content: flex-end;
+  height: 108px;
 }
 .container-fluid {
   display: none;
 }
-.socialMedias,
-.rightsReserved {
+.photo {
+  margin-top: -15px;
+}
+.socialMedias i,
+.rightsReserved,
+.rightsReserved i,
+.photo,
+.photo a {
   align-self: center;
+  color: white;
 }
 .socialMedias i {
   padding: 5px;
+  margin-bottom: 5%;
 }
 i {
   color: black;
