@@ -7,6 +7,6 @@
     width: auto;
   }
   .container {
-    min-height: calc(75vh - 5px);
+    min-height: calc(60vh - 5px);
   }
 }
