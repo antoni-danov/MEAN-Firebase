@@ -31,7 +31,7 @@ i {
     display: none;
   }
   .container-fluid {
-    display: block;
+    display: contents;
     margin-top: -80px;
   }
   .socialMedias,
