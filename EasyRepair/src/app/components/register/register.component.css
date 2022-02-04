@@ -8,7 +8,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
 
-  text-align: start;
+  text-align: center;
   padding: 25px 50px;
   margin: 3% 15%;
   background-color: white;
@@ -22,6 +22,13 @@ label input {
 .role {
   display: flex;
   flex-direction: row;
+}
+.alert {
+  position: relative;
+  padding: 2px;
+  margin-bottom: 2px;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
 [type="radio"] {
   position: absolute;
@@ -45,15 +52,12 @@ button {
 ul {
   list-style-type: none;
 }
-
 li {
   display: inline-block;
 }
-
 input[type="checkbox"][id^="cb"] {
   display: none;
 }
-
 label {
   border: 1px solid #fff;
   padding: 10px;
@@ -68,7 +72,6 @@ label {
   -ms-user-select: none;
   user-select: none;
 }
-
 label::before {
   background-color: white;
   color: white;
@@ -86,24 +89,20 @@ label::before {
   transition-duration: 0.4s;
   transform: scale(0);
 }
-
 label img {
   height: 100px;
   width: 100px;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
 }
-
 :checked + label {
   border-color: #ddd;
 }
-
 :checked + label::before {
   content: "✓";
-  background-color: grey;
+  background-color: greenyellow;
   transform: scale(1);
 }
-
 :checked + label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
@@ -114,108 +113,23 @@ label img {
 }
 @media all and (max-width: 450px) {
   .container {
-    display: none;
-  }
-  .container-fluid {
-    display: block;
+    display: contents;
+    width: 100%;
+    height: 135%;
     border-radius: 15px;
-    border: 1px solid black;
-    margin-bottom: 45px;
-  }
-  label input {
-    width: 0;
-  }
-  .role {
+
     display: flex;
     flex-direction: row;
-  }
-  [type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  [type="radio"] + img {
-    cursor: pointer;
-  }
-  [type="radio"]:checked + img {
-    -webkit-box-shadow: 1px 2px 12px 7px #14c4ac;
-    box-shadow: 1px 2px 12px 7px #14c4ac;
-  }
-  button {
-    background-color: rgb(20, 196, 172);
-    color: white;
-    margin: 2% 20% 4% 18%;
-    padding: 2% 25%;
-  }
-  ul {
-    list-style-type: none;
-  }
+    flex-wrap: wrap;
+    justify-content: space-around;
 
-  li {
-    display: inline-block;
-  }
-
-  input[type="checkbox"][id^="cb"] {
-    display: none;
-  }
-
-  label {
-    border: 1px solid #fff;
-    padding: 10px;
-    display: block;
-    position: relative;
-    margin: 10px;
-    cursor: pointer;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  label::before {
+    text-align: center;
+    padding: 25px 50px;
+    margin: 3% 15%;
     background-color: white;
-    color: white;
-    content: " ";
-    display: block;
-    border-radius: 50%;
-    border: 1px solid grey;
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    line-height: 28px;
-    transition-duration: 0.4s;
-    transform: scale(0);
-  }
 
-  label img {
-    height: 100px;
-    width: 100px;
-    transition-duration: 0.2s;
-    transform-origin: 50% 50%;
-  }
-
-  :checked + label {
-    border-color: #ddd;
-  }
-
-  :checked + label::before {
-    content: "✓";
-    background-color: grey;
-    transform: scale(1);
-  }
-
-  :checked + label img {
-    transform: scale(0.9);
-    box-shadow: 0 0 5px #333;
-    z-index: -1;
-  }
-  .role img {
-    text-align: center;
+    -webkit-box-shadow: 6px 5px 13px 6px rgba(0, 0, 0, 0.73);
+    box-shadow: 6px 5px 13px 6px rgba(0, 0, 0, 0.73);
+    margin: 0;
   }
 }
