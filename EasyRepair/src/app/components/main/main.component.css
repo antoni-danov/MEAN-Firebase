@@ -84,4 +84,7 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
   }
+  #search {
+    margin-top: 40px;
+  }
 }
