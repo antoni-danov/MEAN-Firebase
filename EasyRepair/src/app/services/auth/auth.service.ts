@@ -27,12 +27,6 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
-  async CheckForEmailRoleConnection(role: string) {
-    await this.userService.CheckForUser(role).catch(err => {
-      console.log(err);
-
-    });
-  }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
       .catch(error => {

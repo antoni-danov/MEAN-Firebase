@@ -31,9 +31,6 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
-router.get('/find/:role', (req, res) => {
-    console.log(req.body);
-});
 router.get('/profile/:id', async (req, res) => {
     var user;
 
