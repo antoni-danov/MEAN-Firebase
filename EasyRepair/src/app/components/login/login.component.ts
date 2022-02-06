@@ -52,18 +52,12 @@ export class LoginComponent implements OnInit {
 
   async SignInEmailAndPassword(userdata: any) {
 
-    await this.service.EmailRole(userdata.role).catch((err) => {
-      console.log(err);
+    await this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
+      this.error = err.message;
+      this.form.reset();
     });
 
-  };
-
-  // await this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
-  //   this.error = err.message;
-  //   this.form.reset();
-  // });
-
-}
+  }
   // onDigitInput(event: any) {
 
   //   let element;
@@ -81,4 +75,5 @@ export class LoginComponent implements OnInit {
   //     element.focus();
   //   }
   // }
-// }
+  // }
+}

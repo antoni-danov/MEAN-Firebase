@@ -62,9 +62,6 @@ router.get('/profile/:id', async (req, res) => {
         console.log(error.message);
     }
 });
-router.get('/find/:role', (req, res) => {
-    console.log(req.body);
-});
 router.put('/edit/:id', async (req, res) => {
     const userId = req.params.id;
     try {
