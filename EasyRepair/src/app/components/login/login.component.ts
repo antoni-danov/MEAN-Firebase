@@ -52,10 +52,11 @@ export class LoginComponent implements OnInit {
 
   async SignInEmailAndPassword(userdata: any) {
 
-    await this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
-      this.error = err.message;
-      this.form.reset();
-    });
+    this.service.CheckForEmailRoleConnection(userdata.role);
+    // await this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
+    //   this.error = err.message;
+    //   this.form.reset();
+    // });
 
   }
   // onDigitInput(event: any) {

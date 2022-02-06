@@ -31,6 +31,9 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
+router.get('/find/:role', (req, res) => {
+    console.log(req.body);
+});
 router.get('/profile/:id', async (req, res) => {
     var user;
 
@@ -90,7 +93,7 @@ router.put('/edit/:id', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     const userId = req.params.id;
 
-    return await User.deleteOne({'uid': userId}, (err, data) => {
+    return await User.deleteOne({ 'uid': userId }, (err, data) => {
         if (err) {
             return console.log(err);
         } else {
