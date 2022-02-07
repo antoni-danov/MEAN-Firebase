@@ -25,7 +25,7 @@
         </div>
         <div class="allCards" *ngFor="let item of allProfessions | instantSearch: searchValue">
             <div class="mainCard mb-2">
-                <button class="btn btn-success" (click)="canActivate(item.uid)">
+                <button class="btn btn-warning" (click)="canActivate(item.uid)">
                     <div class="text-center">
                         <div class="card-body">
                             <img *ngIf="item.profession == 'electrician'" class="col-sm-4 rounded float-left"
