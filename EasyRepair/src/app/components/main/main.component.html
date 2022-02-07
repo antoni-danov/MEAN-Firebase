@@ -25,7 +25,7 @@
         </div>
         <div class="allCards" *ngFor="let item of allProfessions | instantSearch: searchValue">
             <div class="mainCard mb-2">
-                <div class="card" style="width: 16rem;">
+                <button class="btn btn-success" (click)="canActivate(item.uid)">
                     <div class="text-center">
                         <div class="card-body">
                             <img *ngIf="item.profession == 'electrician'" class="col-sm-4 rounded float-left"
@@ -42,22 +42,19 @@
                                 src="../../../assets/icons/carpenter.png" alt="Card image cap">
                             <img *ngIf="item.profession == 'locksmith'" class="col-sm-4 rounded float-left"
                                 src="../../../assets/icons/house-key.png" alt="Card image cap">
-                            <h4 class="card-title mt-3"><strong> {{item.profession | titlecase}} </strong></h4>
-                            <p class="card-text">
-                            <p><strong>Name:</strong> {{item.firstname | titlecase}} {{item.lastname | titlecase}}</p>
-                            <p><strong>Profession:</strong> {{item.profession | titlecase}}</p>
-                            <p><strong>City:</strong> {{item.address.city | titlecase}}</p>
-                            <h4 class="card-title mt-3"><strong> {{item.profession | titlecase}} </strong></h4>
-                            <p class="card-text">
-                            <p><strong>Name:</strong> {{item.firstname | titlecase}} {{item.lastname | titlecase}}</p>
-                            <p><strong>Profession:</strong> {{item.profession | titlecase}}</p>
-                            <p><strong>City:</strong> {{item.address.city | titlecase}}</p>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary mb-3" (click)="canActivate(item.uid)">Get in touch</button>
+                            <div class="mainInfo mx-5">
+                                <h5><strong> {{item.firstname | titlecase}} {{item.lastname |
+                                        titlecase}}</strong>
+                                </h5>
+                                <h6 class="card-title text-center"><strong> {{item.profession | titlecase}} </strong>
+                                </h6>
+                            </div>
+                            <div class="city text-start">
+                                <p><strong>City:</strong><br> {{item.address.city | titlecase}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </button>
             </div>
         </div>
     </div>
