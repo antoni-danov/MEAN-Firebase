@@ -1,10 +1,10 @@
-export class errorMessage{
-    static fireBase(errorCode: string){
-        switch(errorCode){
-            case 'auth/too-many-requests':{
+export class errorMessage {
+    static fireBase(errorCode: string) {
+        switch (errorCode) {
+            case 'auth/too-many-requests': {
                 return 'You was try to login too many times.';
             }
-            case 'auth/user-disabled':{
+            case 'auth/user-disabled': {
                 return 'Your account has been disabled.';
             }
             case 'auth/user-not-found': {
@@ -23,6 +23,6 @@ export class errorMessage{
                 return 'Login error try again later.';
             }
         }
-            
+
     }
 }

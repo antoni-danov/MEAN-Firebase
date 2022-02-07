@@ -95,7 +95,7 @@ export class RegisterComponent implements OnInit, OnChanges {
   async SignUpWithEmailAndPassword(data: any) {
 
     await this.service.SignUpWithEmailAndPassword(data).catch(err => {
-      this.error = errorMessage.fireBase(err.code);
+      this.error = err;
     });
   }
 
