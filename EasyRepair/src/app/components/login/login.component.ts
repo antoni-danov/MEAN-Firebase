@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   async SignInEmailAndPassword(userdata: any) {
 
     await this.service.SigInWithEmailAndPassword(userdata).catch((err) => {
-      this.error = err.message;
+      this.error = err;
       this.form.reset();
     });
 

@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { RegisterValidators } from 'src/app/shared/utils';
-import { errorMessage } from 'src/app/shared/errorMessageFactory';
 
 @Component({
   selector: 'app-register',
