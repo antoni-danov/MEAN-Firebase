@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
   crafstman: 'list' | 'profession' = 'list';
   allProfessions: any;
   singleProfession: any;
-  searchValue: any;
+  searchValue!: string;
   spiner: boolean = true;
 
   constructor(private service: ProfessionalService,

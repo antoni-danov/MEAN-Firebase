@@ -32,6 +32,7 @@ export class AuthService {
       .catch(error => {
         throw this.error = errorMessage.fireBase(error.code);
       });
+
     result.user?.updateProfile({
       displayName: `${userdata.firstname} ${userdata.lastname}`
     });
