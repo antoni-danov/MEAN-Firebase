@@ -27,6 +27,9 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
+  RoleEmail(role: string) {
+    this.userService.RoleEmailConfirmation(role);
+  }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
       .catch(error => {
@@ -54,6 +57,8 @@ export class AuthService {
     this.router.navigateByUrl('/main');
   }
   async SigInWithEmailAndPassword(userdata: any) {
+
+    this.RoleEmail(userdata.role);
 
     if (userdata.email && userdata.password) {
 
