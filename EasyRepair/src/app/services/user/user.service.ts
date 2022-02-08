@@ -21,9 +21,6 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  async RoleEmailConfirmation(role: string) {
-    await this.http.get(`${environment.userLocalhost}/find/${role}`).toPromise();
-  }
   async CreateUserData(userdata: User) {
 
     return await this.http.post<User>(`${environment.userLocalhost}/create`, userdata).subscribe(data => {
