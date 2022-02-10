@@ -22,9 +22,9 @@ export class ProfessionalService {
     private http: HttpClient,
   ) { }
 
-  async RoleEmailMatch(role: string, email: string) {
-    return await this.http.get(`${environment.professionalLocalhost}/find/${email}/${role}`).toPromise();
-  }
+  // async RoleEmailMatch(role: string, email: string) {
+  //   return await this.http.get(`${environment.professionalLocalhost}/find/${email}/${role}`).toPromise();
+  // }
   async CreateProfessionalData(userdata: Professional) {
 
     return await this.http.post<Professional>(`${environment.professionalLocalhost}/create`, userdata)
