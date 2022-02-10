@@ -27,6 +27,9 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
+  async RoleEmailVerification(role: string) {
+    this.userService.RoleEmailVerification(role);
+  }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
       .catch(error => {
@@ -55,26 +58,27 @@ export class AuthService {
   }
   async SigInWithEmailAndPassword(userdata: any) {
 
-    if (userdata.email && userdata.password) {
+    this.RoleEmailVerification(userdata.role);
+    // if (userdata.email && userdata.password) {
 
-      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
-        .then(data => {
-          this.uid = data.user?.uid!;
-        })
-        .catch(error => {
-          this.router.navigateByUrl('/login');
+    //   await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
+    //     .then(data => {
+    //       this.uid = data.user?.uid!;
+    //     })
+    //     .catch(error => {
+    //       this.router.navigateByUrl('/login');
 
-          throw this.error = errorMessage.fireBase(error.code);
-        });
+    //       throw this.error = errorMessage.fireBase(error.code);
+    //     });
 
-      const currentJwt = await this.getIdToken();
-      this.jwt = currentJwt!;
-      this.role = userdata.role;
+    //   const currentJwt = await this.getIdToken();
+    //   this.jwt = currentJwt!;
+    //   this.role = userdata.role;
 
-      this.cookiesFactory(this.jwt, this.uid, this.role);
+    //   this.cookiesFactory(this.jwt, this.uid, this.role);
 
-      this.router.navigateByUrl('/main');
-    }
+    //   this.router.navigateByUrl('/main');
+    // }
   }
   async SignOut() {
 
