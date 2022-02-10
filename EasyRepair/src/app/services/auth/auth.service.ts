@@ -19,6 +19,7 @@ export class AuthService {
   role!: string;
   user: any;
   error!: string;
+  match: any;
 
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
@@ -27,8 +28,8 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
-  async RoleEmailVerification(role: string) {
-    this.userService.RoleEmailMatch(role);
+  async RoleEmailVerification(role: string, email: string) {
+    await this.userService.RoleEmailMatch(role, email);
   }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
@@ -58,10 +59,12 @@ export class AuthService {
   }
   async SigInWithEmailAndPassword(userdata: any) {
 
-    const role = userdata.role.toLowerCase();
-    console.log(role);
+    await this.RoleEmailVerification(userdata.role, userdata.email).then(data => { //RETURN UNDEFINED
+      console.log(data);
+      this.match = data;
 
-    this.RoleEmailVerification(role);
+    });
+
     // if (userdata.email && userdata.password) {
 
     //   await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)

@@ -6,9 +6,12 @@ const cors = require('cors');
 module.exports = (app) => {
 
     app.use('/static', express.static('public'));
-    app.use(express.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({
+        extended: false
+    }));
     app.use(cookieParser());
-    app.use(express.json());
+    app.use(bodyParser.json());
     app.use(cors({ origin: '*' }));
     app.use(express.static('public'));
 
