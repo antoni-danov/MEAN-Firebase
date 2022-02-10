@@ -31,19 +31,19 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
-router.post('/find', async (req, res) => {
+router.get('/find/:email/:role', async (req, res) => {
 
-    var match = false;
+    var isMatch = false;
 
     try {
 
-        var check = await User.findOne({ email: req.body.email, role: req.body.role });
+        const check = await User.findOne({ email: req.params.email, role: req.params.role });
 
-        if (check != null) {
-            match = true;
+        if (check != null && check.email == req.params.email && check.role == req.params.role) {
+            isMatch = true;
         }
 
-        return res.json(match)
+        return res.json(isMatch)
 
     } catch (error) {
         console.log(error);
@@ -85,7 +85,6 @@ router.put('/edit/:id', async (req, res) => {
     const userId = req.params.id;
     try {
 
-        console.log(req.body);
         return await User.updateOne({ uid: userId }, {
 
             phonenumber: req.body.phonenumber,

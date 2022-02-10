@@ -28,8 +28,10 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
-  async RoleEmailVerification(role: string, email: string) {
-    await this.userService.RoleEmailMatch(role, email);
+  RoleEmailVerification(role: string, email: string) {
+    return this.userService.RoleEmailMatch(role, email).then(data => {
+      this.match = data;
+    });
   }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
@@ -59,32 +61,33 @@ export class AuthService {
   }
   async SigInWithEmailAndPassword(userdata: any) {
 
-    // await this.RoleEmailVerification(userdata.role, userdata.email).then(data => { //RETURN UNDEFINED
-    //   console.log(data);
-    //   this.match = data;
+    await this.RoleEmailVerification(userdata.role, userdata.email);
 
-    // });
+    if (this.match) {
+      if (userdata.email && userdata.password) {
 
-    if (userdata.email && userdata.password) {
+        await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
+          .then(data => {
+            this.uid = data.user?.uid!;
+          })
+          .catch(error => {
+            this.router.navigateByUrl('/login');
 
-      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
-        .then(data => {
-          this.uid = data.user?.uid!;
-        })
-        .catch(error => {
-          this.router.navigateByUrl('/login');
+            throw this.error = errorMessage.fireBase(error.code);
+          });
 
-          throw this.error = errorMessage.fireBase(error.code);
-        });
+        const currentJwt = await this.getIdToken();
+        this.jwt = currentJwt!;
+        this.role = userdata.role;
 
-      const currentJwt = await this.getIdToken();
-      this.jwt = currentJwt!;
-      this.role = userdata.role;
+        this.cookiesFactory(this.jwt, this.uid, this.role);
 
-      this.cookiesFactory(this.jwt, this.uid, this.role);
-
-      this.router.navigateByUrl('/main');
+        this.router.navigateByUrl('/main');
+      }
+    } else {
+      throw this.error = "Profile or Email doesn't match";
     }
+
   }
   async SignOut() {
 

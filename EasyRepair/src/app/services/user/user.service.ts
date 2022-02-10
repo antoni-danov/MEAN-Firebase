@@ -24,7 +24,7 @@ export class UserService {
   ) { }
 
   async RoleEmailMatch(role: string, email: string) {
-    return await this.http.post(`${environment.userLocalhost}/find`, { role: role, email: email }).toPromise();
+    return await this.http.get(`${environment.userLocalhost}/find/${email}/${role}`).toPromise();
   }
   async CreateUserData(userdata: User) {
 
