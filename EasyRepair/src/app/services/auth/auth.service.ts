@@ -28,11 +28,6 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
-  RoleEmailVerification(role: string, email: string) {
-    return this.userService.RoleEmailMatch(role, email).then(data => {
-      this.match = data;
-    });
-  }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
       .catch(error => {
@@ -61,7 +56,9 @@ export class AuthService {
   }
   async SigInWithEmailAndPassword(userdata: any) {
 
-    await this.RoleEmailVerification(userdata.role, userdata.email);
+    const currentEmail = userdata.email.toLowerCase();
+
+    await this.RoleEmailVerification(userdata.role, currentEmail);
 
     if (this.match) {
       if (userdata.email && userdata.password) {
@@ -85,7 +82,7 @@ export class AuthService {
         this.router.navigateByUrl('/main');
       }
     } else {
-      throw this.error = "Profile or Email doesn't match";
+      throw this.error = "Wrong Profile or Email";
     }
 
   }
@@ -97,6 +94,18 @@ export class AuthService {
 
     await this.afAuth.signOut();
     await location.reload();
+  }
+  async RoleEmailVerification(role: string, email: string) {
+    if (role === 'User') {
+      return await this.userService.RoleEmailMatch(role, email).then(data => {
+        this.match = data;
+      });
+    } else if (role === 'Professional') {
+      return await this.profService.RoleEmailMatch(role, email).then(data => {
+        this.match = data;
+      });
+    }
+
   }
   isAuthenticated() {
 
