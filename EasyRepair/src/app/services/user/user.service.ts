@@ -14,8 +14,6 @@ export class UserService {
 
   role: string | undefined;
   user: any;
-  match: any;
-
 
   constructor(
     private router: Router,
