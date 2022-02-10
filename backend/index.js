@@ -1,5 +1,4 @@
 const express = require('express');
-PORT = process.env.PORT || 3000;
 require('dotenv').config();
 const expressConfig = require('./config/express');
 const databaseConfig = require('./config/database');
@@ -13,7 +12,7 @@ async function start() {
     expressConfig(app);
     routerConfig(app);
 
-    app.listen(PORT, () => {
-        console.log(`The server is listening on port ${PORT}`);
+    app.listen(process.env.PORT || 3000, () => {
+        console.log(`The server is listening on port ${process.env.PORT || 3000}`);
     });
 }
