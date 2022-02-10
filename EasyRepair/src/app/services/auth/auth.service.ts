@@ -28,7 +28,7 @@ export class AuthService {
   ) { }
 
   async RoleEmailVerification(role: string) {
-    this.userService.RoleEmailVerification(role);
+    this.userService.RoleEmailMatch(role);
   }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
@@ -58,7 +58,9 @@ export class AuthService {
   }
   async SigInWithEmailAndPassword(userdata: any) {
 
-    this.RoleEmailVerification(userdata.role);
+    const role = userdata.role.toLowerCase();
+
+    this.RoleEmailVerification(role);
     // if (userdata.email && userdata.password) {
 
     //   await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)

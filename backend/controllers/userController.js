@@ -31,10 +31,23 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
-router.get('/find/:role', (req, res) => {
-    console.log(req.body);
+router.get('/find/:role', async (req, res) => {
+
+    const role = req.body.role;
+    var match = false;
+
+    try {
+        if (role) {
+            match = await User.findOne({ role: role }, match == true);
+
+            res.json(match);
+        }
+    } catch (error) {
+        console.log(error);
+    }
 });
 router.get('/profile/:id', async (req, res) => {
+
     var user;
 
     const userId = req.params.id;
