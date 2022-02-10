@@ -31,7 +31,7 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
-router.get('/find', async (req, res) => {
+router.post('/find', async (req, res) => {
 
     const role = req.body.role;
     console.log(role);
