@@ -31,9 +31,10 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
-router.get('/find/:role', async (req, res) => {
+router.get('/find', async (req, res) => {
 
     const role = req.body.role;
+    console.log(role);
     var match = false;
 
     try {
