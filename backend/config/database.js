@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports = (app) => {
 
-    mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@mean.sxrhp.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`,
+    mongoose.connect(`${process.env.MONGODB_URI}`,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true
