@@ -21,10 +21,8 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  async RoleEmailVerification(role: string) {
-    console.log(role);
-
-    await this.http.get(`${environment.userLocalhost}/find/${role}`).toPromise();
+  async RoleEmailMatch(role: string) {
+    return await this.http.get(`${environment.userLocalhost}/find/${role}`).toPromise();
   }
   async CreateUserData(userdata: User) {
 
