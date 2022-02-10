@@ -16,7 +16,7 @@ router.post('/create', async (req, res) => {
                 city: req.body.city,
                 zipCode: req.body.zipCode
             },
-            role: 'User'
+            role: req.body.role
         });
 
         user.save((err, data) => {
@@ -33,14 +33,17 @@ router.post('/create', async (req, res) => {
 });
 router.post('/find', async (req, res) => {
 
-    const currentrole = req.body.role;
-    console.log(role);
+    var match = false;
 
     try {
 
-        const match = await User.findOne({ role: currentrole });
+        var check = await User.findOne({ email: req.body.email, role: req.body.role });
 
-        console.log(res.json(match));
+        if (check != null) {
+            match = true;
+        }
+
+        return res.json(match)
 
     } catch (error) {
         console.log(error);

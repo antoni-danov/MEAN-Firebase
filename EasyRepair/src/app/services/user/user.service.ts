@@ -14,6 +14,8 @@ export class UserService {
 
   role: string | undefined;
   user: any;
+  match: any;
+
 
   constructor(
     private router: Router,
@@ -21,12 +23,8 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  async RoleEmailMatch(role: string) {
-    console.log(role);
-
-    var test = await this.http.post(`${environment.userLocalhost}/find`, role).toPromise();
-    console.log(test);
-
+  async RoleEmailMatch(role: string, email: string) {
+    return await this.http.post(`${environment.userLocalhost}/find`, { role: role, email: email }).toPromise();
   }
   async CreateUserData(userdata: User) {
 
