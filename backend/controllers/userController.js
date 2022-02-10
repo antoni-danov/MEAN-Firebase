@@ -33,16 +33,15 @@ router.post('/create', async (req, res) => {
 });
 router.post('/find', async (req, res) => {
 
-    const role = req.body.role;
+    const currentrole = req.body.role;
     console.log(role);
-    var match = false;
 
     try {
-        if (role) {
-            match = await User.findOne({ role: role }, match == true);
 
-            res.json(match);
-        }
+        const match = await User.findOne({ role: currentrole });
+
+        console.log(res.json(match));
+
     } catch (error) {
         console.log(error);
     }

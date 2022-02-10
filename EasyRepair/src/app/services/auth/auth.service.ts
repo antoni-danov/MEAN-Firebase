@@ -59,6 +59,7 @@ export class AuthService {
   async SigInWithEmailAndPassword(userdata: any) {
 
     const role = userdata.role.toLowerCase();
+    console.log(role);
 
     this.RoleEmailVerification(role);
     // if (userdata.email && userdata.password) {

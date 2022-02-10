@@ -22,7 +22,11 @@ export class UserService {
   ) { }
 
   async RoleEmailMatch(role: string) {
-    return await this.http.post(`${environment.userLocalhost}/find`, role).toPromise();
+    console.log(role);
+
+    var test = await this.http.post(`${environment.userLocalhost}/find`, role).toPromise();
+    console.log(test);
+
   }
   async CreateUserData(userdata: User) {
 
