@@ -33,6 +33,24 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
+router.get('/find/:email/:role', async (req, res) => {
+
+    var isMatch = false;
+
+    try {
+
+        const check = await Professional.findOne({ email: req.params.email, role: req.params.role });
+
+        if (check != null && check.email == req.params.email && check.role == req.params.role) {
+            isMatch = true;
+        }
+
+        return res.json(isMatch)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 router.get('/all', async (req, res) => {
     return res.json(await Professional.find({}).lean());
 });

@@ -22,23 +22,26 @@ export class ProfessionalService {
     private http: HttpClient,
   ) { }
 
+  async RoleEmailMatch(role: string, email: string) {
+    return await this.http.get(`${environment.professionalLocalhost}/find/${email}/${role}`).toPromise();
+  }
   async CreateProfessionalData(userdata: Professional) {
 
     return await this.http.post<Professional>(`${environment.professionalLocalhost}/create`, userdata)
-    .subscribe(data => {
-      this.user = data;
-    });
+      .subscribe(data => {
+        this.user = data;
+      });
   }
-  async GetAllProfessionals() {    
+  async GetAllProfessionals() {
     return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/all`).toPromise();
   }
-  async GetByProfession(userdata: string){
+  async GetByProfession(userdata: string) {
     return await this.http.get<Professional>(`${environment.professionalLocalhost}/profession/${userdata}`).toPromise();
   }
-  async GetProfessionalById(uid: string) {    
+  async GetProfessionalById(uid: string) {
     return await this.http.get<Professional>(`${environment.professionalLocalhost}/profile/${uid}`).toPromise();
   }
-  async PublicProfessional(uid: string) {    
+  async PublicProfessional(uid: string) {
     return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
   }
   async UpdateProfessionalProfile(userdata: any, uid: string | null) {
