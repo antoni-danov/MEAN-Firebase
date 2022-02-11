@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit, OnChanges {
   }
 
   async SignInEmailAndPassword(userdata: any) {
-    console.log(userdata);
 
     await this.service.SignInWithEmailAndPassword(userdata).catch((err) => {
       this.error = err;
