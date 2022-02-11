@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <input class="form-control" type="text" placeholder="Email" id="email" name="email"
-                                formControlName="email">
+                                formControlName="email" (blur)="onBlurEmail(form.value)">
                             <i class="fas fa-check" *ngIf="form.get('email').valid && form.get('email').touched"
                                 [ngClass]="{checked: form.get('email').valid}"></i>
                         </div>

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports = (app) => {
 
-    mongoose.connect(`${process.env.MONGODB_URI}`,
+    mongoose.connect(`${process.env.MONGODB_URI_LOCAL}`,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true
