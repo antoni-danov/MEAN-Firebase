@@ -12,7 +12,7 @@ module.exports = (app) => {
     }));
     app.use(cookieParser());
     app.use(bodyParser.json());
-    app.use(cors({ origin: '*' }));
+    app.use(cors());
     app.use(express.static('public'));
 
     app.use((req, res, next) => {
