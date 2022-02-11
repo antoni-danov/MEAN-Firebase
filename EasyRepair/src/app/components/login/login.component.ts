@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -9,7 +9,7 @@ import { RegisterValidators } from 'src/app/shared/utils';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnChanges {
   form: any;
   error!: string;
   role: boolean = false;
@@ -37,16 +37,19 @@ export class LoginComponent implements OnInit {
       ]))
     });
   }
+  ngOnChanges() {
+    this.role;
+  }
+  // onBlurEmail(data: any) {
+  //   const email = data.email.toLowerCase();
 
+  //   this.service.RoleEmailVerification(data.role, email).catch((err) => {
+  //     this.error = err;
+  //   });
+  // }
   raidoValue(data: any) {
     if (data) {
       this.role = true;
-
-      if (data.target.id === 'professional') {
-        this.profession = true;
-      } else {
-        this.profession = false;
-      }
     }
   }
 

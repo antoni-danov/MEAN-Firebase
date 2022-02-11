@@ -56,33 +56,25 @@ export class AuthService {
   }
   async SigInWithEmailAndPassword(userdata: any) {
 
-    const currentEmail = userdata.email.toLowerCase();
+    if (userdata.email && userdata.password) {
 
-    await this.RoleEmailVerification(userdata.role, currentEmail);
+      await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
+        .then(data => {
+          this.uid = data.user?.uid!;
+        })
+        .catch(error => {
+          this.router.navigateByUrl('/login');
 
-    if (this.match) {
-      if (userdata.email && userdata.password) {
+          throw this.error = errorMessage.fireBase(error.code);
+        });
 
-        await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
-          .then(data => {
-            this.uid = data.user?.uid!;
-          })
-          .catch(error => {
-            this.router.navigateByUrl('/login');
+      const currentJwt = await this.getIdToken();
+      this.jwt = currentJwt!;
+      this.role = userdata.role;
 
-            throw this.error = errorMessage.fireBase(error.code);
-          });
+      this.cookiesFactory(this.jwt, this.uid, this.role);
 
-        const currentJwt = await this.getIdToken();
-        this.jwt = currentJwt!;
-        this.role = userdata.role;
-
-        this.cookiesFactory(this.jwt, this.uid, this.role);
-
-        this.router.navigateByUrl('/main');
-      }
-    } else {
-      throw this.error = "Wrong Profile or Email";
+      this.router.navigateByUrl('/main');
     }
 
   }
@@ -99,14 +91,17 @@ export class AuthService {
 
     if (role === 'User') {
       return await this.userService.RoleEmailMatch(role, email).then(data => {
-        this.match = data;
+        if (data !== true) {
+          throw this.error = "Wrong Profile or Email";
+        }
       });
     } else if (role === 'Professional') {
       return await this.profService.RoleEmailMatch(role, email).then(data => {
-        this.match = data;
+        if (data !== true) {
+          throw this.error = "Wrong Profile or Email";
+        }
       });
     }
-
   }
   isAuthenticated() {
 
