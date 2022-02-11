@@ -61,7 +61,7 @@ input[type="checkbox"][id^="cb"] {
 label {
   border: 1px solid #fff;
   padding: 10px;
-  display: block;
+  display: contents;
   position: relative;
   margin: 10px;
   cursor: pointer;
@@ -90,19 +90,19 @@ label::before {
   transform: scale(0);
 }
 label img {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
 }
 :checked + label {
   border-color: #ddd;
 }
-:checked + label::before {
+/* :checked + label::before {
   content: "✓";
   background-color: greenyellow;
   transform: scale(1);
-}
+} */
 :checked + label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;

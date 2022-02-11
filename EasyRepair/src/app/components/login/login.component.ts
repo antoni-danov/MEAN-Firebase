@@ -39,24 +39,17 @@ export class LoginComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     this.role;
-    this.profession;
   }
-  onBlurEmail(data: any) {
-    const email = data.email.toLowerCase();
+  // onBlurEmail(data: any) {
+  //   const email = data.email.toLowerCase();
 
-    this.service.RoleEmailVerification(data.role, email).catch((err) => {
-      this.error = err;
-    });
-  }
+  //   this.service.RoleEmailVerification(data.role, email).catch((err) => {
+  //     this.error = err;
+  //   });
+  // }
   raidoValue(data: any) {
     if (data) {
       this.role = true;
-
-      if (data.target.id === 'professional') {
-        this.profession = true;
-      } else {
-        this.profession = false;
-      }
     }
   }
 
