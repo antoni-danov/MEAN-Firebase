@@ -97,10 +97,15 @@ export class AuthService {
   }
   async RoleEmailVerification(role: string, email: string) {
 
-    return await this.userService.RoleEmailMatch(role, email).then(data => {
-      this.match = data;
-
-    });
+    if (role === 'User') {
+      return await this.userService.RoleEmailMatch(role, email).then(data => {
+        this.match = data;
+      });
+    } else if (role === 'Professional') {
+      return await this.profService.RoleEmailMatch(role, email).then(data => {
+        this.match = data;
+      });
+    }
 
   }
   isAuthenticated() {
