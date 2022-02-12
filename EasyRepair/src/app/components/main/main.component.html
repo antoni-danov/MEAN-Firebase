@@ -7,15 +7,15 @@
     </div>
     <button class="dropdown btn" style="font-size:25px;cursor:pointer">Filters &#9776;
         <div class="dropdown-content">
-            <button type="button" id="all" class="btn btn-success mx-2" (click)="reload()">All</button>
-            <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</button>
-            <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Electricians</button>
-            <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Carpenters</button>
-            <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Tailors</button>
-            <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Locksmiths</button>
-            <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Painters</button>
-            <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat
-                engineers</button>
+            <option id="all" class="btn btn-success mx-2" (click)="reload()">All</option>
+            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</option>
+            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Electricians</option>
+            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Carpenters</option>
+            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Tailors</option>
+            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Locksmiths</option>
+            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Painters</option>
+            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat
+                engineers</option>
         </div>
     </button>
     <div class="mobileProfession">
@@ -23,38 +23,65 @@
             <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
             </div>
         </div>
-        <div class="allCards" *ngFor="let item of allProfessions | instantSearch: searchValue">
-            <div class="mainCard mb-2">
-                <button class="btn btn-light" (click)="canActivate(item.uid)">
-                    <div class="text-center">
-                        <div class="card-body">
-                            <img *ngIf="item.profession == 'electrician'" class="col-sm-4 rounded float-left"
-                                src="../../../assets/icons/electricity.png" alt="Card image cap">
-                            <img *ngIf="item.profession == 'heat engineer'" class="col-sm-4 rounded float-left"
-                                src="../../../assets/icons/climatisation.png" alt="Card image cap">
-                            <img *ngIf="item.profession == 'tailor'" class="col-sm-4 rounded float-left"
-                                src="../../../assets/icons/tailoring.png" alt="Card image cap">
-                            <img *ngIf="item.profession == 'plumber'" class="col-sm-4 rounded float-left"
-                                src="../../../assets/icons/plumbing.png" alt="Card image cap">
-                            <img *ngIf="item.profession == 'painter'" class="col-sm-4 rounded float-left"
-                                src="../../../assets/icons/painting.png" alt="Card image cap">
-                            <img *ngIf="item.profession == 'carpenter'" class="col-sm-4 rounded float-left"
-                                src="../../../assets/icons/carpenter.png" alt="Card image cap">
-                            <img *ngIf="item.profession == 'locksmith'" class="col-sm-4 rounded float-left"
-                                src="../../../assets/icons/house-key.png" alt="Card image cap">
-                            <div class="mainInfo mx-5">
-                                <h5><strong> {{item.firstname | titlecase}} {{item.lastname |
-                                        titlecase}}</strong>
-                                </h5>
-                                <h6 class="card-title text-center"><strong> {{item.profession | titlecase}} </strong>
-                                </h6>
+        <div *ngIf="list">
+            <div class="allCards" *ngFor="let item of allProfessions | instantSearch: searchValue">
+                <div class="mainCard mb-2">
+                    <button class="btn btn-light" (click)="canActivate(item.uid)">
+                        <div class="text-center">
+                            <div class="card-body">
+                                <img *ngIf="item.profession == 'electrician'" class="col-sm-4 rounded float-left"
+                                    src="../../../assets/icons/electricity.png" alt="Card image cap">
+                                <img *ngIf="item.profession == 'heat engineer'" class="col-sm-4 rounded float-left"
+                                    src="../../../assets/icons/climatisation.png" alt="Card image cap">
+                                <img *ngIf="item.profession == 'tailor'" class="col-sm-4 rounded float-left"
+                                    src="../../../assets/icons/tailoring.png" alt="Card image cap">
+                                <img *ngIf="item.profession == 'plumber'" class="col-sm-4 rounded float-left"
+                                    src="../../../assets/icons/plumbing.png" alt="Card image cap">
+                                <img *ngIf="item.profession == 'painter'" class="col-sm-4 rounded float-left"
+                                    src="../../../assets/icons/painting.png" alt="Card image cap">
+                                <img *ngIf="item.profession == 'carpenter'" class="col-sm-4 rounded float-left"
+                                    src="../../../assets/icons/carpenter.png" alt="Card image cap">
+                                <img *ngIf="item.profession == 'locksmith'" class="col-sm-4 rounded float-left"
+                                    src="../../../assets/icons/house-key.png" alt="Card image cap">
+                                <div class="mainInfo mx-5">
+                                    <h5><strong> {{item.firstname | titlecase}} {{item.lastname |
+                                            titlecase}}</strong>
+                                    </h5>
+                                    <h6 class="card-title text-center"><strong> {{item.profession | titlecase}}
+                                        </strong>
+                                    </h6>
+                                </div>
+                                <div class="city text-start">
+                                    <p><strong>City:</strong><br> {{item.address.city | titlecase}}</p>
+                                </div>
                             </div>
-                            <div class="city text-start">
-                                <p><strong>City:</strong><br> {{item.address.city | titlecase}}</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="cards" *ngIf="profession">
+            <div *ngFor="let item of singleProfession">
+                <div class="mainCard m-4">
+                    <div class="card" style="width: 16rem;">
+                        <div class="text-center">
+                            <div class="card-body">
+                                <img class="col-sm-4 rounded float-left" src="../../../assets/images/builder.png"
+                                    alt="Card image cap">
+                                <h4 class="card-title mt-3"><strong> {{item.profession | titlecase}} </strong></h4>
+                                <p class="card-text">
+                                <p><strong>Name:</strong> {{item.firstname | titlecase}} {{item.lastname | titlecase}}
+                                </p>
+                                <p><strong>Profession:</strong> {{item.profession | titlecase}}</p>
+                                <p><strong>City:</strong> {{item.address.city | titlecase}}</p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary mb-3" (click)="canActivate(item.uid)">Get in
+                                    touch</button>
                             </div>
                         </div>
                     </div>
-                </button>
+                </div>
             </div>
         </div>
     </div>
