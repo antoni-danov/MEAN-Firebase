@@ -36,41 +36,31 @@
 <div class="container-fluid">
     <section>
         <h1 class="left-side m-3"><a id="heather" href="/">Easy repair<i class="fas fa-tools"></i></a></h1>
-        <div *ngIf="loggedIn" class="dropdown" id="profileSection">
-            <div *ngIf="role == 'User'">
-                <button class="btn btn-info">
-                    <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">
-                    <i class="fa fa-caret-down m-2"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a *ngIf="loggedIn" class="profile" routerLink="/user/profile/{{userUid}}">Profile</a>
-                    <a *ngIf="loggedIn" class="btn btn-info" routerLink="/" (click)="logout()">Logout</a>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="loggedIn" class="dropdown">
-            <div *ngIf="role == 'Professional'">
-                <button class="btn btn-info">
-                    <img class="rounded" src="../../../../assets/images/builder.png" alt="Card image cap">
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div id="profileLinks" class="dropdown-content">
-                    <a *ngIf="loggedIn" class="profile" routerLink="/professionals/profile/{{userUid}}">Profile</a>
-                    <a *ngIf="loggedIn" class="btn btn-info" routerLink="/" (click)="logout()">Logout</a>
-                </div>
-            </div>
-        </div>
     </section>
     <section>
         <span id="myBtn" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
 
         <div id="myNav" class="overlay">
             <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-            <div class="overlay-content">
+            <div class="overlay-content" *ngIf="!loggedIn">
                 <a routerLink="/" (click)="closeNav()">Home</a>
                 <a routerLink="/main" (click)="closeNav()">Our professionals</a>
                 <a routerLink="/login" (click)="closeNav()">Login</a>
                 <a routerLink="/register" (click)="closeNav()">Register</a>
+            </div>
+            <div class="overlay-content" *ngIf="loggedIn">
+                <div *ngIf="role == 'User'">
+                    <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">
+                    <a routerLink="/user/profile/{{userUid}}" (click)="closeNav()">Profile</a>
+                    <a routerLink="/" (click)="logout()">Logout</a>
+                </div>
+                <div *ngIf="role == 'Professional'">
+
+                    <a routerLink="/professionals/profile/{{userUid}}" (click)="closeNav()"><img class="rounded"
+                            src="../../../../assets/images/builder.png" alt="Card image cap"><br> Profile</a>
+                    <a routerLink="/" (click)="logout()">Logout</a>
+                </div>
+
             </div>
         </div>
     </section>
