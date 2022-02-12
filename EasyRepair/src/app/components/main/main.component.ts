@@ -40,10 +40,18 @@ export class MainComponent implements OnInit {
       this.spiner = false;
     });
   }
+  openNav() {
+    document.getElementById("myNav")!.style.width = "100%";
+  }
+  closeNav() {
+    document.getElementById("myNav")!.style.width = "0%";
+  }
   reload() {
     location.reload();
   }
   professionsFilter(event: any) {
+    console.log(event.target.firstChild.data);
+
     const value = event.target.firstChild.data;
 
     const result = value.slice(0, -1).toLowerCase();
