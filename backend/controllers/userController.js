@@ -37,9 +37,14 @@ router.get('/find/:email/:role', async (req, res) => {
 
     try {
 
-        const check = await User.findOne({ email: req.params.email, role: req.params.role });
+        const checkForEmail = {
+            _id: 0,
+            email: 1
+        };
 
-        if (check != null && check.email == req.params.email && check.role == req.params.role) {
+        const check = await User.findOne({ email: req.params.email }, checkForEmail);
+
+        if (check != null && check.email === req.params.email) {
             isMatch = true;
         }
 

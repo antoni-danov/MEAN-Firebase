@@ -58,10 +58,8 @@ export class AuthService {
 
     const currentEmail = userdata.email.toLowerCase();
 
+    await this.RoleEmailVerification(userdata.role, currentEmail);
 
-    // this.RoleEmailVerification(userdata.role, currentEmail);
-
-    // if (this.match) {
     if (userdata.email && userdata.password) {
 
       await this.afAuth.signInWithEmailAndPassword(userdata.email, userdata.password)
@@ -82,9 +80,6 @@ export class AuthService {
 
       this.router.navigateByUrl('/main');
     }
-    // } else {
-    //   throw this.error = "Wrong Profile or Email";
-    // }
 
   }
   async SignOut() {
@@ -100,18 +95,20 @@ export class AuthService {
 
     if (role === 'User') {
       return await this.userService.RoleEmailMatch(role, email).then(data => {
+
         this.match = data;
-        // if (data !== true) {
-        //   throw this.error = "Wrong Profile or Email";
-        // }
+        if (data !== true) {
+          throw this.error = "Wrong Profile or Email";
+        }
       });
     } else if (role === 'Professional') {
       return await this.profService.RoleEmailMatch(role, email).then(data => {
+
         this.match = data;
 
-        // if (data !== true) {
-        //   throw this.error = "Wrong Profile or Email";
-        // }
+        if (data !== true) {
+          throw this.error = "Wrong Profile or Email";
+        }
       });
     }
   }
