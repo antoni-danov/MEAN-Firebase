@@ -40,9 +40,9 @@ export class AuthService {
     userdata.uid = result.user?.uid;
 
     if (userdata.role === 'User') {
-      await this.userService.CreateUserData(userdata);
+      this.userService.CreateUserData(userdata);
     } else if (userdata.role === 'Professional') {
-      await this.profService.CreateProfessionalData(userdata);
+      this.profService.CreateProfessionalData(userdata);
     }
 
     await firebase.default.auth().currentUser?.getIdToken()
