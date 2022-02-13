@@ -55,20 +55,20 @@ export class ProfileComponent implements OnInit {
   }
   async getUserInfo() {
     return await this.service.GetUserById(this.uid).then(data => {
-      this.userInfo = data;      
+      this.userInfo = data;
     });
   }
-  async setDefaultForm(){
+  async setDefaultForm() {
 
     this.action = 'update';
-    
+
     this.updateInformation = {
       phonenumber: this.userInfo.phonenumber,
       strNumber: this.userInfo.address.strNumber,
       addressLine: this.userInfo.address.addressLine,
       city: this.userInfo.address.city,
       zipCode: this.userInfo.address.zipCode
-    };   
+    };
 
     await this.form.setValue(this.updateInformation);
   }
@@ -96,7 +96,6 @@ export class ProfileComponent implements OnInit {
       this.service.DeleteUserProfile();
       this.auth.SignOut();
       this.router.navigateByUrl('/');
-      console.log('You was removed');
 
     } else {
       this.message = 'This time was close!';
