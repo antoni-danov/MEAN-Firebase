@@ -135,4 +135,10 @@ label img {
   ul {
     padding-left: 0;
   }
+  .my-4 {
+    margin-bottom: 1rem !important;
+  }
+  .btn-primary {
+    margin-left: 35px;
+  }
 }
