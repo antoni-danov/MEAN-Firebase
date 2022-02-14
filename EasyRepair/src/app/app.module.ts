@@ -26,6 +26,7 @@ import { MainComponent } from './components/main/main.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
 import { InterceptorService } from './services/interceptor/interceptor.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
     AngularFireAuthModule, // auth
     AngularFireStorageModule,
     HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     CookieService,

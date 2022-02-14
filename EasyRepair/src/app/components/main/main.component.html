@@ -24,7 +24,9 @@
             </div>
         </div>
         <div *ngIf="list">
-            <div class="allCards" *ngFor="let item of allProfessions | instantSearch: searchValue">
+            <pagination-controls class="myPagination" (pageChange)="p = $event"></pagination-controls>
+            <div class="allCards"
+                *ngFor="let item of allProfessions | instantSearch: searchValue | paginate: { itemsPerPage: 10, currentPage: p }">
                 <div class="mainCard mb-2">
                     <button class="btn btn-light" (click)="canActivate(item.uid)">
                         <div class="text-center">
@@ -44,24 +46,27 @@
                                 <img *ngIf="item.profession == 'locksmith'" class="col-sm-4 rounded float-left"
                                     src="../../../assets/icons/house-key.png" alt="Card image cap">
                                 <div class="mainInfo mx-5">
-                                    <h5><strong> {{item.firstname | titlecase}} {{item.lastname |
+                                    <h5 class="card-title text-center"><strong> {{item.firstname | titlecase}}
+                                            {{item.lastname |
                                             titlecase}}</strong>
                                     </h5>
                                     <h6 class="card-title text-center"><strong> {{item.profession | titlecase}}
                                         </strong>
                                     </h6>
                                 </div>
-                                <div class="city text-start">
-                                    <p><strong>City:</strong><br> {{item.address.city | titlecase}}</p>
+                                <div class="city text-center">
+                                    <p><strong></strong><br> {{item.address.city | titlecase}}</p>
                                 </div>
                             </div>
                         </div>
                     </button>
                 </div>
             </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
         <div class="cards" *ngIf="profession">
-            <div *ngFor="let item of singleProfession">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 10, currentPage: p }">
                 <div class="mainCard m-4">
                     <div class="card" style="width: 16rem;">
                         <div class="text-center">
@@ -83,6 +88,8 @@
                     </div>
                 </div>
             </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
         </div>
     </div>
 </div>
@@ -104,8 +111,11 @@
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat engineers</button>
     </section>
     <hr>
+    <pagination-controls *ngIf="list" class="text-center" (pageChange)="p = $event"></pagination-controls>
+
     <div class="cards" *ngIf="list">
-        <div *ngFor="let item of allProfessions | instantSearch: searchValue">
+        <div
+            *ngFor="let item of allProfessions | instantSearch: searchValue | paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="mainCard m-4">
                 <div class="card" style="width: 16rem;">
                     <div class="text-center">
@@ -138,8 +148,11 @@
             </div>
         </div>
     </div>
+    <pagination-controls *ngIf="list" class="text-center" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls *ngIf="profession" class="text-center" (pageChange)="p = $event"></pagination-controls>
+
     <div class="cards" *ngIf="profession">
-        <div *ngFor="let item of singleProfession">
+        <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="mainCard m-4">
                 <div class="card" style="width: 16rem;">
                     <div class="text-center">
@@ -160,6 +173,8 @@
             </div>
         </div>
     </div>
+    <pagination-controls *ngIf="profession" class="text-center" (pageChange)="p = $event"></pagination-controls>
+
     <div class="emptyCategory" *ngIf="profession && singleProfession.length == 0">
         <h3>There is no Professionals for the moment on this category.</h3>
     </div>
