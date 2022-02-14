@@ -15,6 +15,7 @@ export class MainComponent implements OnInit {
   singleProfession: any;
   searchValue!: string;
   spiner: boolean = true;
+  p: number = 1;
 
   constructor(private service: ProfessionalService,
     private authService: AuthService,

@@ -59,6 +59,9 @@ img {
 .mobileProfession {
   display: none;
 }
+pagination-controls {
+  color: white;
+}
 
 @media all and (max-width: 450px) {
   .mobileContainer,
@@ -133,5 +136,8 @@ img {
   }
   .city {
     font-style: italic;
+  }
+  pagination-controls {
+    color: white;
   }
 }
