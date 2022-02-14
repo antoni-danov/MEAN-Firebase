@@ -52,12 +52,13 @@
                 <div *ngIf="role == 'User'">
                     <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">
                     <a routerLink="/user/profile/{{userUid}}" (click)="closeNav()">Profile</a>
+                    <a routerLink="/main" (click)="closeNav()">Our professionals</a>
                     <a routerLink="/" (click)="logout()">Logout</a>
                 </div>
                 <div *ngIf="role == 'Professional'">
-
                     <a routerLink="/professionals/profile/{{userUid}}" (click)="closeNav()"><img class="rounded"
                             src="../../../../assets/images/builder.png" alt="Card image cap"><br> Profile</a>
+                    <a routerLink="/main" (click)="closeNav()">Our professionals</a>
                     <a routerLink="/" (click)="logout()">Logout</a>
                 </div>
 
