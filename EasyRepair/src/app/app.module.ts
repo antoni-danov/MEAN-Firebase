@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -25,6 +25,7 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { MainComponent } from './components/main/main.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
+import { InterceptorService } from './services/interceptor/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -50,10 +51,17 @@ import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [CookieService,
-    AuthGuard],
+  providers: [
+    CookieService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
