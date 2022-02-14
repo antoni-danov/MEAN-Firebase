@@ -20,6 +20,7 @@ export class AuthService {
   user: any;
   error!: string;
   match: any;
+  currentDate!: Date;
 
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
@@ -72,6 +73,7 @@ export class AuthService {
           throw this.error = errorMessage.fireBase(error.code);
         });
 
+
       const currentJwt = await this.getIdToken();
       this.jwt = currentJwt!;
       this.role = userdata.role;
@@ -123,36 +125,17 @@ export class AuthService {
   }
   cookiesFactory(jwt: string, uid: string, role: string) {
 
-    const currentDate = new Date();
-    currentDate.setHours(currentDate.getHours() + 12);
+    this.currentDate = new Date();
+    this.currentDate.setHours(this.currentDate.getHours() + 12);
 
-    this.cookieService.set('JWT', jwt, { expires: currentDate, secure: true });
-    this.cookieService.set('uid', uid, { expires: currentDate, secure: true });
-    this.cookieService.set('role', role, { expires: currentDate, secure: true });
+    this.cookieService.set('JWT', jwt, { expires: this.currentDate, secure: true });
+    this.cookieService.set('uid', uid, { expires: this.currentDate, secure: true });
+    this.cookieService.set('role', role, { expires: this.currentDate, secure: true });
   }
   async getIdToken() {
 
     return await firebase.default.auth().currentUser?.getIdToken();
   }
-}
-export async function emailVerification(email: any): Promise<boolean> {
-
-  var result = {};
-
-  const db = firebase.default.firestore();
-
-  const checkEmail = await db.collection("users").where("email", "==", email).get()
-    .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        result = doc.get('email');
-      });
-    });
-
-  if (Object.keys(result).length !== 0) {
-    return true;
-  }
-
-  return false;
 }
 
 

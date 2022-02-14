@@ -8,9 +8,9 @@ export const environment = {
     messagingSenderId: "431505137239",
     appId: "1:431505137239:web:e78dad69ef2f7e84a08d12"
   },
-  userLocalhost: 'http://localhost:3000/user',
-  professionalLocalhost: 'http://localhost:3000/professional',
-  // userLocalhost: 'https://easyrepair.herokuapp.com/user',
-  // professionalLocalhost: 'https://easyrepair.herokuapp.com/professional',
+  // userLocalhost: 'http://localhost:3000/user',
+  // professionalLocalhost: 'http://localhost:3000/professional',
+  userLocalhost: 'https://easyrepair.herokuapp.com/user',
+  professionalLocalhost: 'https://easyrepair.herokuapp.com/professional',
 
 };
