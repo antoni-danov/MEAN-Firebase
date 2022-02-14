@@ -122,9 +122,13 @@ export class AuthService {
     return false;
   }
   cookiesFactory(jwt: string, uid: string, role: string) {
-    this.cookieService.set('JWT', jwt);
-    this.cookieService.set('uid', uid);
-    this.cookieService.set('role', role);
+
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 12);
+
+    this.cookieService.set('JWT', jwt, { expires: currentDate, secure: true });
+    this.cookieService.set('uid', uid, { expires: currentDate, secure: true });
+    this.cookieService.set('role', role, { expires: currentDate, secure: true });
   }
   async getIdToken() {
 
