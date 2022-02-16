@@ -5,7 +5,7 @@
                 class="form-control border rounded-pill" id="search">
         </div>
     </div>
-    <button class="dropdown btn" style="font-size:25px;cursor:pointer">Filters &#9776;
+    <!-- <button class="dropdown btn" style="font-size:25px;cursor:pointer">Filters &#9776;
         <div class="dropdown-content">
             <option id="all" class="btn btn-success mx-2" (click)="reload()">All</option>
             <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</option>
@@ -17,14 +17,15 @@
             <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat
                 engineers</option>
         </div>
-    </button>
+    </button> -->
     <div class="mobileProfession">
-        <div *ngIf="spiner" class="d-flex justify-content-center mt-5">
-            <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
-            </div>
-        </div>
+
         <div *ngIf="list">
-            <pagination-controls class="myPagination" (pageChange)="p = $event"></pagination-controls>
+            <div *ngIf="spiner" class="d-flex justify-content-center mt-5">
+                <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                </div>
+            </div>
+            <pagination-controls *ngIf="!spiner" class="myPagination" (pageChange)="p = $event"></pagination-controls>
             <div class="allCards"
                 *ngFor="let item of allProfessions | instantSearch: searchValue | paginate: { itemsPerPage: 10, currentPage: p }">
                 <div class="mainCard mb-2">
@@ -62,10 +63,10 @@
                     </button>
                 </div>
             </div>
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls *ngIf="!spiner" (pageChange)="p = $event"></pagination-controls>
         </div>
         <div class="cards" *ngIf="profession">
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls *ngIf="!spiner" (pageChange)="p = $event"></pagination-controls>
             <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 10, currentPage: p }">
                 <div class="mainCard m-4">
                     <div class="card" style="width: 16rem;">
@@ -88,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls *ngIf="!spiner" (pageChange)="p = $event"></pagination-controls>
 
         </div>
     </div>
@@ -111,7 +112,7 @@
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat engineers</button>
     </section>
     <hr>
-    <pagination-controls *ngIf="list" class="text-center" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls *ngIf="!spiner" class="text-center" (pageChange)="p = $event"></pagination-controls>
 
     <div class="cards" *ngIf="list">
         <div
@@ -148,8 +149,8 @@
             </div>
         </div>
     </div>
-    <pagination-controls *ngIf="list" class="text-center" (pageChange)="p = $event"></pagination-controls>
-    <pagination-controls *ngIf="profession" class="text-center" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls *ngIf="!spiner" class="text-center" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls *ngIf="!spiner" class="text-center" (pageChange)="p = $event"></pagination-controls>
 
     <div class="cards" *ngIf="profession">
         <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 9, currentPage: p }">
@@ -173,7 +174,7 @@
             </div>
         </div>
     </div>
-    <pagination-controls *ngIf="profession" class="text-center" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls *ngIf="!spiner" class="text-center" (pageChange)="p = $event"></pagination-controls>
 
     <div class="emptyCategory" *ngIf="profession && singleProfession.length == 0">
         <h3>There is no Professionals for the moment on this category.</h3>
