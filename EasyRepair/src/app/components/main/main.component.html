@@ -106,9 +106,8 @@
                     </button>
                 </div>
             </div>
+            <pagination-controls *ngIf="!spiner" (pageChange)="p = $event"></pagination-controls>
         </div>
-        <pagination-controls *ngIf="!spiner" (pageChange)="p = $event"></pagination-controls>
-
     </div>
 </div>
 <div class="container">
