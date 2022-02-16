@@ -9,13 +9,13 @@ export class InstantSearchPipe implements PipeTransform {
     if (!allProfessions || !searchValue) {
       return allProfessions;
     }
-    const searchValueToLOwer = searchValue.toLocaleLowerCase();
+    const searchValueToLower = searchValue.toLocaleLowerCase();
     return allProfessions.filter(
       (search: any) =>
-        search.firstname.toLocaleLowerCase().includes(searchValueToLOwer) ||
-        search.lastname.toLocaleLowerCase().includes(searchValueToLOwer) ||
-        search.profession.toLocaleLowerCase().includes(searchValueToLOwer) ||
-        search.address.city.toLocaleLowerCase().includes(searchValueToLOwer)
+        search.firstname.toLocaleLowerCase().includes(searchValueToLower) ||
+        search.lastname.toLocaleLowerCase().includes(searchValueToLower) ||
+        search.profession.toLocaleLowerCase().includes(searchValueToLower) ||
+        search.address.city.toLocaleLowerCase().includes(searchValueToLower)
     );
   }
 }
