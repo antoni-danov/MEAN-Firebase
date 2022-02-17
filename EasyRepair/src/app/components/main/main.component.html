@@ -128,6 +128,10 @@
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat engineers</button>
     </section>
     <hr>
+    <div *ngIf="spiner" class="d-flex justify-content-center mt-5">
+        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+        </div>
+    </div>
     <pagination-controls *ngIf="!spiner" class="text-center" (pageChange)="p = $event"></pagination-controls>
 
     <div class="cards" *ngIf="list">
