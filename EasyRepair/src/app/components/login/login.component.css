@@ -1,16 +1,11 @@
 .container {
-  width: 70%;
+  width: 35%;
   height: 135%;
   border-radius: 15px;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-
   text-align: center;
   padding: 25px 50px;
-  margin: 3% 15%;
+  margin: 3% 60%;
   background-color: white;
 
   -webkit-box-shadow: 6px 5px 13px 6px rgba(0, 0, 0, 0.73);
