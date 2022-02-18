@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterContentChecked {
 
   loggedIn: any;
   userUid: string | undefined;
@@ -22,12 +22,15 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.afAuth.authState.subscribe((data) => {
-      this.userUid = this.cookieService.get('uid');
-      this.role = this.cookieService.get('role');
-      this.loggedIn = data;
-    });
+
+    this.userUid = this.cookieService.get('uid');
+    this.role = this.cookieService.get('role');
+    this.loggedIn = this.service.isAuthenticated();
   }
+  ngAfterContentChecked() {
+    this.ngOnInit();
+  }
+
   openNav() {
     document.getElementById("myNav")!.style.width = "100%";
   }
