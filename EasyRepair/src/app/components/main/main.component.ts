@@ -51,7 +51,6 @@ export class MainComponent implements OnInit {
     location.reload();
   }
   professionsFilter(event: any) {
-    console.log(event.target.firstChild.data);
 
     const value = event.target.firstChild.data;
 
