@@ -24,7 +24,7 @@
             </div>
             <div *ngIf="role" class="mainForm">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-user fa-lg"></i><span class="asteriks">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-user fa-lg"></i><span
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -146,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -186,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-11">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -207,7 +207,7 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="profession" class="col-lg-12">
+                    <div *ngIf="profession" class="col-lg-11">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -232,7 +232,7 @@
                                 [ngClass]="{checked: form.get('profession').valid}"></i>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -257,7 +257,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -286,7 +286,7 @@
             </div>
             <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Register</button>
         </form>
-        <div>You have already your account? <a href="/login">Sign in</a></div>
+        <div>You have already your account? <br><a href="/login">Sign in</a></div>
         <br>
     </section>
 </div>
