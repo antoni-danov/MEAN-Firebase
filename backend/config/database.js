@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports = (app) => {
     var URI;
+
     if (app.get('env') === 'development') {
         URI = process.env.MONGODB_URI_LOCAL;
     } else if (app.get('env') === 'production') {
