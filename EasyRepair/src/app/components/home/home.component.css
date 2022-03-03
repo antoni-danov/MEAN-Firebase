@@ -4,6 +4,7 @@
 .buttons {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 .user,
 button {
@@ -18,7 +19,7 @@ button {
 .user {
   text-align: center;
   float: right;
-  width: 50%;
+  width: 51%;
   height: 250px;
   background-color: rgba(222, 232, 243, 0.356);
   padding: 30px;
