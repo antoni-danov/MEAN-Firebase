@@ -4,6 +4,9 @@
   flex-wrap: wrap;
   margin: 4%;
 }
+.m-4 {
+  margin: 0.5rem !important;
+}
 .card {
   -webkit-box-shadow: 6px 5px 13px 6px rgba(0, 0, 0, 0.73);
   box-shadow: 6px 5px 13px 6px rgba(0, 0, 0, 0.73);
