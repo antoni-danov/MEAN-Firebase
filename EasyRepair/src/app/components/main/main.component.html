@@ -133,8 +133,7 @@
         </div>
     </div>
     <pagination-controls *ngIf="!spiner" class="text-center" (pageChange)="p = $event"></pagination-controls>
-
-    <div class="cards" *ngIf="list">
+    <div class="cards d-flex justify-content-center" *ngIf="list">
         <div
             *ngFor="let item of allProfessions | instantSearch: searchValue | paginate: { itemsPerPage: 8, currentPage: p }">
             <div class="mainCard m-4">
@@ -178,8 +177,7 @@
             </div>
         </div>
     </div>
-
-    <div class="cards" *ngIf="profession">
+    <div class="cards d-flex justify-content-center" *ngIf="profession">
         <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="mainCard m-4">
                 <div class="card" style="width: 14rem;">
@@ -223,7 +221,6 @@
         </div>
     </div>
     <pagination-controls *ngIf="!spiner" class="text-center" (pageChange)="p = $event"></pagination-controls>
-
     <div class="emptyCategory" *ngIf="profession && singleProfession.length == 0">
         <h3>There is no Professionals for the moment on this category.</h3>
     </div>
