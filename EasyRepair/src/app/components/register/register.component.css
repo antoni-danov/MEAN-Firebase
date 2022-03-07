@@ -20,8 +20,8 @@ label input {
 }
 .alert {
   position: relative;
-  padding: 2px 30px;
-  margin-bottom: 15px;
+  padding: 2px;
+  margin-bottom: 2px;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
