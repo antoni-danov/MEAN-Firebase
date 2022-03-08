@@ -70,6 +70,7 @@ router.get('/profile/:id', async (req, res) => {
 
     const userProfile = {
         _id: 0,
+        uid: 0,
         firstname: 1,
         lastname: 1,
         phonenumber: 1,
@@ -80,7 +81,8 @@ router.get('/profile/:id', async (req, res) => {
             strNumber: 1,
             zipCode: 1,
         },
-        email: 1
+        email: 1,
+        role: 0
     };
 
     try {
@@ -101,12 +103,14 @@ router.get('/publicProfile/:id', async (req, res) => {
     const professionalId = req.params.id;
     const userProfile = {
         _id: 0,
+        uid: 0,
         firstname: 1,
         lastname: 1,
         profession: 1,
         address: { city: 1 },
         email: 1,
-        phonenumber: 1
+        phonenumber: 1,
+        role: 0
     };
 
     try {
