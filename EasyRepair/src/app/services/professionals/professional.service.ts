@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
-import { UpdateProfessional } from 'src/app/models/Professional/UpdateProfessional';
 import { Professional } from 'src/app/models/Professional/Professional';
 import { ProfessionalInfo as GetProfesional } from 'src/app/models/Professional/GetProfessional';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -45,26 +44,8 @@ export class ProfessionalService {
     return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
   }
   async UpdateProfessionalProfile(userdata: any, uid: string | null) {
-
-    try {
-      if (userdata) {
-        const professional: UpdateProfessional = {
-          phonenumber: userdata.phonenumber,
-          address: {
-            strNumber: userdata.strNumber,
-            addressLine: userdata.addressLine,
-            city: userdata.city,
-            zipCode: userdata.zipCode
-          },
-          profession: userdata.profession
-        };
-        await this.router.navigateByUrl(`/professionals/profile/${uid}`);
-        return await this.http.put<Professional>(`${environment.professionalLocalhost}/edit/${uid}`, professional).toPromise();
-
-      }
-    } catch (error) {
-      return console.log(error);
-    }
+    // await this.router.navigateByUrl(`/professionals/profile/${uid}`);
+    return await this.http.put<Professional>(`${environment.professionalLocalhost}/edit/${uid}`, userdata).toPromise();
   }
   async DeleteProfessionalProfile() {
     await firebase.default.auth().currentUser?.delete();

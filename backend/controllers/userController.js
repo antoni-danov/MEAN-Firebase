@@ -71,7 +71,7 @@ router.get('/profile/:id', async (req, res) => {
             addressLine: 1,
             city: 1,
             zipCode: 1
-        }
+        },
     };
 
     try {

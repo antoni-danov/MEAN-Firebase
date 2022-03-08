@@ -80,7 +80,7 @@ router.get('/profile/:id', async (req, res) => {
             strNumber: 1,
             zipCode: 1,
         },
-        email: 1
+        email: 1,
     };
 
     try {
@@ -106,7 +106,7 @@ router.get('/publicProfile/:id', async (req, res) => {
         profession: 1,
         address: { city: 1 },
         email: 1,
-        phonenumber: 1
+        phonenumber: 1,
     };
 
     try {
@@ -129,10 +129,10 @@ router.put('/edit/:id', async (req, res) => {
 
             phonenumber: req.body.phonenumber,
             address: {
-                strNumber: req.body.address.strNumber,
-                addressLine: req.body.address.addressLine,
-                city: req.body.address.city,
-                zipCode: req.body.address.zipCode
+                strNumber: req.body.strNumber,
+                addressLine: req.body.addressLine,
+                city: req.body.city,
+                zipCode: req.body.zipCode
             },
             profession: req.body.profession
         }, (err, data) => {
