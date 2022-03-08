@@ -62,7 +62,6 @@ router.get('/profile/:id', async (req, res) => {
 
     const userInfo = {
         _id: 0,
-        uid: 0,
         firstname: 1,
         lastname: 1,
         email: 1,
@@ -73,7 +72,6 @@ router.get('/profile/:id', async (req, res) => {
             city: 1,
             zipCode: 1
         },
-        role: 0
     };
 
     try {
