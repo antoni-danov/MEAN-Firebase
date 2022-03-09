@@ -80,7 +80,7 @@ router.get('/profile/:id', async (req, res) => {
             strNumber: 1,
             zipCode: 1,
         },
-        email: 1,
+        email: 1
     };
 
     try {
@@ -123,6 +123,7 @@ router.get('/publicProfile/:id', async (req, res) => {
 });
 router.put('/edit/:id', async (req, res) => {
     const professionalId = req.params.id;
+    console.log(req.body);
     try {
 
         return await Professional.updateOne({ uid: professionalId }, {
