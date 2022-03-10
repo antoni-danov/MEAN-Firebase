@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.checkUser();
 
     if (this.isOwner === true) {
@@ -50,7 +50,8 @@ export class ProfileComponent implements OnInit {
       strNumber: new FormControl(''),
       addressLine: new FormControl(''),
       city: new FormControl(''),
-      zipCode: new FormControl('')
+      zipCode: new FormControl(''),
+      profession: new FormControl('')
     });
   }
 
@@ -80,7 +81,8 @@ export class ProfileComponent implements OnInit {
       strNumber: this.userInfo.address.strNumber,
       addressLine: this.userInfo.address.addressLine,
       city: this.userInfo.address.city,
-      zipCode: this.userInfo.address.zipCode
+      zipCode: this.userInfo.address.zipCode,
+      profession: this.userInfo.profession
     };
 
     await this.form.setValue(this.updateInformation);
