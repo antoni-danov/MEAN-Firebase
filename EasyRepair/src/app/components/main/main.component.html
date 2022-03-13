@@ -5,19 +5,33 @@
                 class="form-control border rounded-pill" id="search">
         </div>
     </div>
-    <button class="dropdown btn" style="font-size:25px;cursor:pointer">Filters &#9776;
-        <div class="dropdown-content">
-            <option id="all" class="btn btn-success mx-2" (click)="reload()">All</option>
-            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</option>
-            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Electricians</option>
-            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Carpenters</option>
-            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Tailors</option>
-            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Locksmiths</option>
-            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Painters</option>
-            <option class="btn btn-warning mx-3" (click)="professionsFilter($event)">Heat
-                engineers</option>
+    <button class="btn btn-light" style="background-color:transparent; font-size:25px;cursor:pointer;" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Filters
+        &#9776;</button>
+
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-body small">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">By profession:</h5>
+            <br>
+            <button id="all" class="btn btn-success m-1" (click)="reload()">All</button>
+            <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
+                (click)="professionsFilter($event)">Plumbers</button>
+            <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
+                (click)="professionsFilter($event)">Electricians</button>
+            <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
+                (click)="professionsFilter($event)">Carpenters</button>
+            <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
+                (click)="professionsFilter($event)">Tailors</button>
+            <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
+                (click)="professionsFilter($event)">Locksmiths</button>
+            <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
+                (click)="professionsFilter($event)">Painters</button>
+            <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas" (click)="professionsFilter($event)">Heat
+                engineers</button>
         </div>
-    </button>
+    </div>
+
+
     <div class="mobileProfession">
         <div *ngIf="list">
             <div *ngIf="spiner" class="d-flex justify-content-center mt-5">
@@ -118,7 +132,7 @@
         </div>
     </div>
     <section class="buttons mx-4">
-        <button type="button" id="all" class="btn btn-success mx-2" (click)="reload()">All</button>
+        <button type="button" id="all" class="btn btn-success" (click)="reload()">All</button>
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</button>
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Electricians</button>
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Carpenters</button>

@@ -54,6 +54,62 @@
         </div>
     </div>
 </div>
+<div class="profile profile mt-5" *ngIf="profile">
+    <div class="container-fluid" *ngIf="userInfo">
+        <div class="row">
+            <div style="width: 14rem;">
+                <img class="col-sm-6 rounded float-left mx-3" src="../../../../assets/images/programmer.png"
+                    alt="Card image cap">
+            </div>
+            <div class="col">
+                <h4><strong>Profile information: </strong></h4>
+                <br>
+                <div class="row float-right">
+                    <p><strong>Name:</strong> {{userInfo.firstname | titlecase}} {{userInfo.lastname | titlecase}}
+                    </p>
+                </div>
+                <div class="row float-right">
+                    <div class="col"><strong>Email:</strong> {{userInfo.email}}</div>
+                </div>
+                <div class="row float-right my-3">
+                    <div class="col">
+                        <p><strong>Phone:</strong> {{userInfo.phonenumber}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-primary my-5" routerLink="/main">Go Back</button>
+                </div>
+            </div>
+            <div class="col">
+                <h4><strong>Address information: </strong></h4>
+                <br>
+                <div class="row float-right">
+                    <p><strong>Street name:</strong> {{userInfo.address.addressLine | titlecase}}</p>
+                </div>
+                <div class="row float-right">
+                    <p><strong>Street number:</strong> {{userInfo.address.strNumber}}</p>
+                </div>
+                <div class="row float-right">
+                    <p><strong>ZIP Code:</strong> {{userInfo.address.zipCode}}</p>
+                </div>
+                <div class="row float-right">
+                    <p><strong>City:</strong> {{userInfo.address.city | titlecase}}</p>
+                </div>
+                <div class="col-lg-10">
+                    <button type="button" class="btn btn-warning mt-4" (click)="setDefaultForm()">Update your
+                        profile</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="isOwner">
+            <div *ngIf="isOwner" class="dangerZone text-center">
+                <h4>You enter in the danger zone!</h4>
+                <button type="button" class="btn btn-danger btn-large mt-4" (click)="deleteProfile()">Delete your
+                    profile</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="update" *ngIf="update">
     <div class="update-container" *ngIf="userInfo">
         <form [formGroup]="form" (ngSubmit)="updateUser(form.value)">
