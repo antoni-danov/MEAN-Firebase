@@ -5,15 +5,16 @@
                 class="form-control border rounded-pill" id="search">
         </div>
     </div>
-    <button class="btn btn-light" style="background-color:transparent; font-size:25px;cursor:pointer;" type="button"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Filters
+    <button id="filtersBtn" class="btn btn-light" style="background-color:transparent; font-size:25px;cursor:pointer;"
+        type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+        aria-controls="offcanvasBottom">Filters
         &#9776;</button>
-
     <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
         <div class="offcanvas-body small">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">By profession:</h5>
             <br>
-            <button id="all" class="btn btn-success m-1" (click)="reload()">All</button>
+            <button id="all" class="btn btn-success m-1" data-bs-dismiss="offcanvas"
+                (click)="professionsFilter($event)">All</button>
             <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
                 (click)="professionsFilter($event)">Plumbers</button>
             <button class="btn btn-warning m-1" data-bs-dismiss="offcanvas"
@@ -30,8 +31,6 @@
                 engineers</button>
         </div>
     </div>
-
-
     <div class="mobileProfession">
         <div *ngIf="list">
             <div *ngIf="spiner" class="d-flex justify-content-center mt-5">
@@ -132,7 +131,7 @@
         </div>
     </div>
     <section class="buttons mx-4">
-        <button type="button" id="all" class="btn btn-success" (click)="reload()">All</button>
+        <button type="button" id="all" class="btn btn-success" (click)="professionsFilter($event)">All</button>
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Plumbers</button>
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Electricians</button>
         <button type="button" class="btn btn-warning mx-3" (click)="professionsFilter($event)">Carpenters</button>

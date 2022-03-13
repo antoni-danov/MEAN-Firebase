@@ -71,6 +71,9 @@ pagination-controls {
   .mobileProfession {
     display: block;
   }
+  #filtersBtn {
+    border: transparent;
+  }
   .container,
   cards {
     display: none;
