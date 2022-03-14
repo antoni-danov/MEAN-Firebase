@@ -47,25 +47,24 @@ export class MainComponent implements OnInit {
   closeNav() {
     document.getElementById("myNav")!.style.width = "0%";
   }
-  professionsFilter(event: any) {
+  async professionsFilter(event: any) {
 
     const value = event.target.firstChild.data;
 
     if (value === 'All') {
       this.crafstman = 'list';
-      return this.ngOnInit();
+      this.ngOnInit();
     } else {
       const result = value.slice(0, -1).toLowerCase();
 
-      this.service.GetByProfession(result).then(data => {
-        this.singleProfession = data;
+      await this.service.GetByProfession(result).then(data => {
         this.crafstman = 'profession';
+        this.p = 1;
+        this.singleProfession = data;
       })
         .catch(err => {
           console.log(err.message);
         });
-
-      return this.singleProfession;
     }
   }
   canActivate(value: any) {

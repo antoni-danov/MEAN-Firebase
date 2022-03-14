@@ -44,7 +44,6 @@ export class ProfessionalService {
     return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
   }
   async UpdateProfessionalProfile(userdata: any, uid: string | null) {
-    // await this.router.navigateByUrl(`/professionals/profile/${uid}`);
     return await this.http.put<Professional>(`${environment.professionalLocalhost}/edit/${uid}`, userdata).toPromise();
   }
   async DeleteProfessionalProfile() {
