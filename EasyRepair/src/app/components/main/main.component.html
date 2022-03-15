@@ -83,7 +83,8 @@
                 </div>
             </div>
             <pagination-controls *ngIf="!spiner" (pageChange)="p = $event"></pagination-controls>
-            <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 10, currentPage: p }">
+            <div
+                *ngFor="let item of singleProfession | instantSearch: searchValue | paginate: { itemsPerPage: 10, currentPage: p }">
                 <div class="mainCard mb-2">
                     <button class="btn btn-light" (click)="canActivate(item.uid)">
                         <div class="text-center">
@@ -191,7 +192,8 @@
         </div>
     </div>
     <div class="cards d-flex justify-content-center" *ngIf="profession">
-        <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 9, currentPage: p }">
+        <div
+            *ngFor="let item of singleProfession | instantSearch: searchValue paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="mainCard m-4">
                 <div class="card" style="width: 14rem;">
                     <div class="text-center">
