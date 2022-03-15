@@ -57,10 +57,10 @@ router.get('/find/:email/:role', async (req, res) => {
     }
 });
 router.get('/all', async (req, res) => {
-    return res.json(await Professional.find({}).lean());
+    return res.json(await Professional.find({}).sort({ 'lastname': 1 }).lean());
 });
 router.get('/profession/:profession', async (req, res) => {
-    return res.json(await Professional.find({ profession: req.params.profession }).lean());
+    return res.json(await Professional.find({ profession: req.params.profession }).sort({ 'lastname': 1 }).lean());
 });
 router.get('/profile/:id', async (req, res) => {
 
