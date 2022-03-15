@@ -83,7 +83,8 @@
                 </div>
             </div>
             <pagination-controls *ngIf="!spiner" (pageChange)="p = $event"></pagination-controls>
-            <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 10, currentPage: p }">
+            <div
+                *ngFor="let item of singleProfession | instantSearch: searchValue | paginate: { itemsPerPage: 10, currentPage: p }">
                 <div class="mainCard mb-2">
                     <button class="btn btn-light" (click)="canActivate(item.uid)">
                         <div class="text-center">
