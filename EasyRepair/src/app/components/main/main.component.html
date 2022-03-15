@@ -191,7 +191,8 @@
         </div>
     </div>
     <div class="cards d-flex justify-content-center" *ngIf="profession">
-        <div *ngFor="let item of singleProfession | paginate: { itemsPerPage: 9, currentPage: p }">
+        <div
+            *ngFor="let item of singleProfession | instantSearch: searchValue paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="mainCard m-4">
                 <div class="card" style="width: 14rem;">
                     <div class="text-center">
