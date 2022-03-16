@@ -1,5 +1,5 @@
 .container {
-  min-height: calc(65vh - 5px);
+  min-height: calc(55vh - 5px);
 }
 @media all and (max-width: 450px) {
   html,

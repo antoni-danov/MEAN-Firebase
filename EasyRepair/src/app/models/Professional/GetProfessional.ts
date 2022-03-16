@@ -1,4 +1,4 @@
-export class ProfessionalInfo {
+export class GetProfessional {
     firstname!: string;
     lastname!: string;
     email!: string;
