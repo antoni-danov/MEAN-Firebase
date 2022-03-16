@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { Professional } from 'src/app/models/Professional/Professional';
-import { ProfessionalInfo as GetProfesional } from 'src/app/models/Professional/GetProfessional';
+import { GetProfessional } from 'src/app/models/Professional/GetProfessional';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,8 @@ export class ProfessionalService {
         this.user = data;
       });
   }
-  async GetAllProfessionals() {
-    return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/all`).toPromise();
+  async GetAllProfessionals(): Promise<GetProfessional[]> {
+    return await this.http.get<GetProfessional[]>(`${environment.professionalLocalhost}/all`).toPromise();
   }
   async GetByProfession(userdata: string) {
     return await this.http.get<Professional>(`${environment.professionalLocalhost}/profession/${userdata}`).toPromise();
@@ -41,7 +42,7 @@ export class ProfessionalService {
     return await this.http.get<Professional>(`${environment.professionalLocalhost}/profile/${uid}`).toPromise();
   }
   async PublicProfessional(uid: string) {
-    return await this.http.get<GetProfesional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
+    return await this.http.get<GetProfessional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
   }
   async UpdateProfessionalProfile(userdata: any, uid: string | null) {
     return await this.http.put<Professional>(`${environment.professionalLocalhost}/edit/${uid}`, userdata).toPromise();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GetProfessional } from 'src/app/models/Professional/GetProfessional';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ProfessionalService } from 'src/app/services/professionals/professional.service';
 
@@ -11,7 +12,7 @@ import { ProfessionalService } from 'src/app/services/professionals/professional
 export class MainComponent implements OnInit {
 
   crafstman: 'list' | 'profession' = 'list';
-  allProfessions: any;
+  allProfessions!: GetProfessional[];
   singleProfession: any;
   searchValue!: string;
   spiner: boolean = true;
