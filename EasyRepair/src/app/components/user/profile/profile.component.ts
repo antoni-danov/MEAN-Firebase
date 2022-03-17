@@ -15,11 +15,11 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ProfileComponent implements OnInit {
   form: any;
-  message: any;
-  updateInformation: any;
+  message!: string;
+  updateInformation!: any;
 
   action: 'profile' | 'update' = 'profile';
-  uid: any;
+  uid: string;
   userInfo: any;
   isOwner: boolean | undefined;
 
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     private auth: AuthService,
     private cookie: CookieService
   ) {
-    this.uid = this.route.snapshot.paramMap.get('id');
+    this.uid = this.route.snapshot.paramMap.get('id')!;
   }
 
   ngOnInit() {
