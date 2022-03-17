@@ -1,4 +1,4 @@
-export class UpdateUser{
+export class UpdateUser {
     phonenumber!: number;
     address!: {
         strNumber: number;

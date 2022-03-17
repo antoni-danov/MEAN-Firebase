@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
+import { UpdateProfessional } from 'src/app/models/Professional/UpdateProfessional';
 
 @Injectable({
   providedIn: 'root'
@@ -35,13 +36,13 @@ export class ProfessionalService {
   async GetAllProfessionals(): Promise<GetProfessional[]> {
     return await this.http.get<GetProfessional[]>(`${environment.professionalLocalhost}/all`).toPromise();
   }
-  async GetByProfession(userdata: string) {
-    return await this.http.get<Professional>(`${environment.professionalLocalhost}/profession/${userdata}`).toPromise();
+  async GetByProfession(userdata: string): Promise<GetProfessional[]> {
+    return await this.http.get<GetProfessional[]>(`${environment.professionalLocalhost}/profession/${userdata}`).toPromise();
   }
-  async GetProfessionalById(uid: string) {
+  async GetProfessionalById(uid: string): Promise<Professional> {
     return await this.http.get<Professional>(`${environment.professionalLocalhost}/profile/${uid}`).toPromise();
   }
-  async PublicProfessional(uid: string) {
+  async PublicProfessional(uid: string): Promise<GetProfessional> {
     return await this.http.get<GetProfessional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
   }
   async UpdateProfessionalProfile(userdata: any, uid: string | null) {

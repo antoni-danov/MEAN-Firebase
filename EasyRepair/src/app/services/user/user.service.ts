@@ -30,29 +30,23 @@ export class UserService {
       this.user = data;
     });
   }
-  async UpdateUserProfile(userdata: any, uid: string | null) {
+  async UpdateUserProfile(userdata: any, uid: string | null): Promise<UpdateUser> {
 
-    try {
-      if (userdata) {
-        const user: UpdateUser = {
-          phonenumber: userdata.phonenumber,
-          address: {
-            strNumber: userdata.strNumber,
-            addressLine: userdata.addressLine,
-            city: userdata.city,
-            zipCode: userdata.zipCode
-          }
-        };
-        this.router.navigateByUrl(`/user/profile/${uid}`);
-        return await this.http.put<User>(`${environment.userLocalhost}/edit/${uid}`, user).toPromise();
-
+    const user: UpdateUser = {
+      phonenumber: userdata.phonenumber,
+      address: {
+        strNumber: userdata.strNumber,
+        addressLine: userdata.addressLine,
+        city: userdata.city,
+        zipCode: userdata.zipCode
       }
-    } catch (error) {
-      return console.log(error);
-    }
+    };
+
+    this.router.navigateByUrl(`/user/profile/${uid}`);
+    return await this.http.put<UpdateUser>(`${environment.userLocalhost}/edit/${uid}`, user).toPromise();
   }
-  async GetUserById(uid: string) {
-    return await this.http.get(`${environment.userLocalhost}/profile/${uid}`).toPromise();
+  async GetUserById(uid: string): Promise<User> {
+    return await this.http.get<User>(`${environment.userLocalhost}/profile/${uid}`).toPromise();
   }
   async DeleteUserProfile() {
     await firebase.default.auth().currentUser?.delete();
