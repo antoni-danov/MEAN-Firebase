@@ -40,19 +40,11 @@ export class LoginComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.role;
   }
-  // onBlurEmail(data: any) {
-  //   const email = data.email.toLowerCase();
-
-  //   this.service.RoleEmailVerification(data.role, email).catch((err) => {
-  //     this.error = err;
-  //   });
-  // }
   raidoValue(data: any) {
     if (data) {
       this.role = true;
     }
   }
-
   async SignInEmailAndPassword(userdata: any) {
 
     await this.service.SignInWithEmailAndPassword(userdata).catch((err) => {
@@ -61,22 +53,5 @@ export class LoginComponent implements OnInit, OnChanges {
     });
 
   }
-  // onDigitInput(event: any) {
 
-  //   let element;
-  //   if (event.code !== 'Backspace') {
-  //     element = event.srcElement.nextElementSibling;
-  //   }
-  //   if (event.code === 'Backspace') {
-  //     element = event.srcElement.previousElementSibling;
-  //   }
-  //   if (element == null) {
-
-  //     return;
-  //   } else {
-
-  //     element.focus();
-  //   }
-  // }
-  // }
 }

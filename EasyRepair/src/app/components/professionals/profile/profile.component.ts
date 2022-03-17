@@ -4,6 +4,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { GetProfessional } from 'src/app/models/Professional/GetProfessional';
+import { Professional } from 'src/app/models/Professional/Professional';
+import { UpdateProfessional } from 'src/app/models/Professional/UpdateProfessional';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ProfessionalService } from 'src/app/services/professionals/professional.service';
 
@@ -15,12 +18,13 @@ import { ProfessionalService } from 'src/app/services/professionals/professional
 export class ProfileComponent implements OnInit {
 
   form: any;
-  message: any;
-  updateInformation: any;
+  message!: string;
+  updateInformation!: UpdateProfessional;
 
   action: 'profile' | 'update' = 'profile';
-  uid: any;
-  userInfo: any;
+  uid: string;
+  userInfo!: Professional;
+  profileAllPublic!: GetProfessional;
   isOwner: boolean | undefined;
 
   constructor(
@@ -32,7 +36,7 @@ export class ProfileComponent implements OnInit {
     private cookie: CookieService,
     private auth: AuthService
   ) {
-    this.uid = this.route.snapshot.paramMap.get('id');
+    this.uid = this.route.snapshot.paramMap.get('id')!;
   }
 
   ngOnInit() {
@@ -69,7 +73,7 @@ export class ProfileComponent implements OnInit {
   }
   async publicProfile() {
     return await this.service.PublicProfessional(this.uid).then(data => {
-      this.userInfo = data;
+      this.profileAllPublic = data;
     });
   }
   async setDefaultForm() {
@@ -93,7 +97,6 @@ export class ProfileComponent implements OnInit {
 
       if (confirm('Would you like to save changes?')) {
         return await this.service.UpdateProfessionalProfile(userdata, this.uid).then(data => {
-          this.userInfo = data;
           this.action = 'profile';
           this.ngOnInit();
         });

@@ -1,10 +1,8 @@
-export class UpdateProfessional{
+export class UpdateProfessional {
     phonenumber!: number;
-    address!: {
-        strNumber: number;
-        addressLine: string;
-        city: string;
-        zipCode: number;
-    };
+    strNumber!: number;
+    addressLine!: string;
+    city!: string;
+    zipCode!: number;
     profession!: string;
 }

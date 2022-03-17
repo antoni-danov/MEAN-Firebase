@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -11,11 +10,11 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NavbarComponent implements OnInit, AfterContentChecked {
 
-  loggedIn: any;
+  loggedIn!: boolean;
   userUid: string | undefined;
   role: string | undefined;
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(
     private service: AuthService,
     private cookieService: CookieService,
     private router: Router) {
