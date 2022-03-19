@@ -19,10 +19,17 @@
                         <label for="professional"><img class="col-sm-4 rounded float-left mx-3"
                                 src="../../../../assets/images/builder.png" alt="Card image cap"></label>
                     </li>
+                    <div class="alert">
+                        <div *ngIf="error && form.get('email').touched && form.get('role').hasError('required')">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-triangle"></i> Choose your profile before continuing.
+                            </div>
+                        </div>
+                    </div>
                 </ul>
 
             </div>
-            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+            <div *ngIf="error" class="alert alert-danger"><i class="fas fa-exclamation-triangle"></i> {{error}}</div>
 
             <div *ngIf="role" class="mainForm">
                 <div class="row">
@@ -35,7 +42,6 @@
                             </div>
                             <input class="form-control" type="text" placeholder="Email" id="email" name="email"
                                 formControlName="email">
-                            <!-- (blur)="onBlurEmail(form.value)" -->
                             <i class="fas fa-check" *ngIf="form.get('email').valid && form.get('email').touched"
                                 [ngClass]="{checked: form.get('email').valid}"></i>
                         </div>
