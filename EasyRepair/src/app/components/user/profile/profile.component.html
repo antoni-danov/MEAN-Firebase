@@ -122,7 +122,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="number" placeholder="Phone number" id="phonenumber"
-                            name="phonenumber" formControlName="phonenumber">
+                            name="phonenumber" formControlName="phonenumber" ngxTrim='focusout'>
                         <i class="fas fa-check" *ngIf="form.get('phonenumber').valid && form.get('phonenumber').touched"
                             [ngClass]="{checked: form.get('phonenumber').valid}"></i>
                     </div>
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="text" placeholder="City" id="city" name="city"
-                            formControlName="city">
+                            formControlName="city" ngxTrim='focusout'>
                         <i class="fas fa-check" *ngIf="form.get('city').valid && form.get('city').touched"
                             [ngClass]="{checked: form.get('city').valid}"></i>
                     </div>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="text" placeholder="Address" id="addressLine"
-                            name="addressLine" formControlName="addressLine">
+                            name="addressLine" formControlName="addressLine" ngxTrim='focusout'>
                         <i class="fas fa-check" *ngIf="form.get('addressLine').valid && form.get('addressLine').touched"
                             [ngClass]="{checked: form.get('addressLine').valid}"></i>
                     </div>
@@ -163,7 +163,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="number" placeholder="ZIP Code" id="zipCode" name="zipCode"
-                            formControlName="zipCode">
+                            formControlName="zipCode" ngxTrim='focusout'>
                         <i class="fas fa-check" *ngIf="form.get('zipCode').valid && form.get('zipCode').touched"
                             [ngClass]="{checked: form.get('zipCode').valid}"></i>
                     </div>
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="number" placeholder="Number" id="strNumber" name="strNumber"
-                            formControlName="strNumber">
+                            formControlName="strNumber" ngxTrim='focusout'>
                         <i class="fas fa-check" *ngIf="form.get('strNumber').valid && form.get('strNumber').touched"
                             [ngClass]="{checked: form.get('strNumber').valid}"></i>
                     </div>
