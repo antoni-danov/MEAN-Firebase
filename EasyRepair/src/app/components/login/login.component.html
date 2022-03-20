@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <input class="form-control" type="text" placeholder="Email" id="email" name="email"
-                                formControlName="email" ngxTrim='focusout'>
+                                formControlName="email" trim="blur">
                             <i class="fas fa-check" *ngIf="form.get('email').valid && form.get('email').touched"
                                 [ngClass]="{checked: form.get('email').valid}"></i>
                         </div>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="password" id="password" placeholder="Password" name="password"
-                            formControlName="password" ngxTrim='focusout'>
+                            formControlName="password" trim="blur">
                         <i class="fas fa-check" *ngIf="form.get('password').valid && form.get('password').touched"
                             [ngClass]="{checked: form.get('password').valid}"></i>
                     </div>

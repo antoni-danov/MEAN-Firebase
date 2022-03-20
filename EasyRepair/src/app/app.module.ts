@@ -27,7 +27,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
 import { InterceptorService } from './services/interceptor/interceptor.service';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgxTrimModule } from 'ngx-trim';
+import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { NgxTrimModule } from 'ngx-trim';
     AngularFireStorageModule,
     HttpClientModule,
     NgxPaginationModule,
-    NgxTrimModule
+    NgxTrimDirectiveModule
   ],
   providers: [
     CookieService,
