@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import * as firebase from 'firebase/compat/app';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-contact',
@@ -11,13 +12,15 @@ import * as firebase from 'firebase/compat/app';
 export class ContactComponent implements OnInit {
 
   form: any;
-  sendFromEmail: any;
+  sendFromEmail!: string;
 
-  constructor(private location: Location) { }
+  constructor(private location: Location,
+    private cookies: CookieService
+  ) { }
 
   ngOnInit() {
 
-    this.sendFromEmail = firebase.default.auth().currentUser?.email;
+    this.sendFromEmail = this.cookies.get('email');
 
     this.form = new FormGroup({
       sendFrom: new FormControl(this.sendFromEmail),
@@ -28,13 +31,13 @@ export class ContactComponent implements OnInit {
   }
 
   async getEmail() {
-    
+
   }
   sendMessage(messageData: any) {
     console.log(messageData);
 
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }
