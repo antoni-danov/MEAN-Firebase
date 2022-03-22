@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
-import * as firebase from 'firebase/compat/app';
 import { CookieService } from 'ngx-cookie-service';
+import { ProfessionalService } from 'src/app/services/professionals/professional.service';
 
 @Component({
   selector: 'app-contact',
@@ -13,12 +13,16 @@ export class ContactComponent implements OnInit {
 
   form: any;
   sendFromEmail!: string;
+  sendTo!: string;
 
   constructor(private location: Location,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private professionalService: ProfessionalService
   ) { }
 
   ngOnInit() {
+
+    this.sendTo = this.professionalService.email;
 
     this.sendFromEmail = this.cookies.get('email');
 

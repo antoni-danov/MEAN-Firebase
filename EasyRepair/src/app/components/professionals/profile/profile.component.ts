@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   form: any;
   message!: string;
   updateInformation!: UpdateProfessional;
+  email!: string;
 
   action: 'profile' | 'update' = 'profile';
   uid: string;
@@ -134,5 +135,11 @@ export class ProfileComponent implements OnInit {
     }
 
     return this.isOwner = false;
+  }
+  //Get email to send the message
+  getEmail(event: any) {
+    this.email = event.target.innerText;
+    this.router.navigate(['/contact'], { state: { sendTo: this.email } });
+    // this.router.navigateByUrl('/contact');
   }
 }
