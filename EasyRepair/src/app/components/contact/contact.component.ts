@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { ProfessionalService } from 'src/app/services/professionals/professional.service';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -13,16 +14,12 @@ export class ContactComponent implements OnInit {
 
   form: any;
   sendFromEmail!: string;
-  sendTo!: string;
 
   constructor(private location: Location,
     private cookies: CookieService,
-    private professionalService: ProfessionalService
   ) { }
 
   ngOnInit() {
-
-    this.sendTo = this.professionalService.email;
 
     this.sendFromEmail = this.cookies.get('email');
 
@@ -32,10 +29,6 @@ export class ContactComponent implements OnInit {
       label: new FormControl(''),
       message: new FormControl('')
     });
-  }
-
-  async getEmail() {
-
   }
   sendMessage(messageData: any) {
     console.log(messageData);
