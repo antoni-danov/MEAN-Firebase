@@ -43,7 +43,11 @@ export class ProfessionalService {
     return await this.http.get<Professional>(`${environment.professionalLocalhost}/profile/${uid}`).toPromise();
   }
   async PublicProfessional(uid: string): Promise<GetProfessional> {
-    return await this.http.get<GetProfessional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
+    const publicProfile = await this.http.get<GetProfessional>(`${environment.professionalLocalhost}/publicProfile/${uid}`).toPromise();
+    this.email = publicProfile.email;
+
+    return publicProfile;
+
   }
   async UpdateProfessionalProfile(userdata: any, uid: string | null) {
     return await this.http.put<Professional>(`${environment.professionalLocalhost}/edit/${uid}`, userdata).toPromise();
@@ -55,4 +59,5 @@ export class ProfessionalService {
   async DeleteProfessionalData(uid: string) {
     return this.http.delete(`${environment.professionalLocalhost}/delete/${uid}`).toPromise();
   }
+
 }
