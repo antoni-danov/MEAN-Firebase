@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
-import { ProfessionalService } from 'src/app/services/professionals/professional.service';
-import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact',

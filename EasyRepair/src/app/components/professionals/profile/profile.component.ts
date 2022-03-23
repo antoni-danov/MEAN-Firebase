@@ -137,10 +137,4 @@ export class ProfileComponent implements OnInit {
 
     return this.isOwner = false;
   }
-  //Get email to send the message
-  getEmail(event: any) {
-    this.email = event.target.innerText;
-    this.router.navigate(['/contact'], { state: { sendTo: this.email } });
-    // this.router.navigateByUrl('/contact');
-  }
 }
