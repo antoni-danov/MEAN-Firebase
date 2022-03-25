@@ -19,10 +19,17 @@
                         <label for="professional"><img class="col-sm-4 rounded float-left mx-3"
                                 src="../../../../assets/images/builder.png" alt="Card image cap"></label>
                     </li>
+                    <div class="alert">
+                        <div *ngIf="error && form.get('email').touched && form.get('role').hasError('required')">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-triangle"></i> Choose your profile before continuing.
+                            </div>
+                        </div>
+                    </div>
                 </ul>
 
             </div>
-            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+            <div *ngIf="error" class="alert alert-danger"><i class="fas fa-exclamation-triangle"></i> {{error}}</div>
 
             <div *ngIf="role" class="mainForm">
                 <div class="row">
@@ -34,8 +41,7 @@
                                 </div>
                             </div>
                             <input class="form-control" type="text" placeholder="Email" id="email" name="email"
-                                formControlName="email">
-                            <!-- (blur)="onBlurEmail(form.value)" -->
+                                formControlName="email" trim="blur">
                             <i class="fas fa-check" *ngIf="form.get('email').valid && form.get('email').touched"
                                 [ngClass]="{checked: form.get('email').valid}"></i>
                         </div>
@@ -60,8 +66,9 @@
                             </div>
                         </div>
                         <input class="form-control" type="password" id="password" placeholder="Password" name="password"
-                            formControlName="password">
-                        <i class="fas fa-check" *ngIf="form.get('password').valid && form.get('password').touched"
+                            formControlName="password" trim="blur">
+                        <i class="fas fa-check"
+                            *ngIf="form.get('password').valid && form.get('password').touched && form.get('password').dirty"
                             [ngClass]="{checked: form.get('password').valid}"></i>
                     </div>
                     <div class="alert">
@@ -78,7 +85,8 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Login</button>
+            <button class="btn btn-primary" type="submit"
+                [disabled]="form.invalid || !role || form.get('password').pristine">Login</button>
         </form>
         <div>You don't have account? <br><a href="/register" class="text-center">Sign Up</a></div>
         <br>

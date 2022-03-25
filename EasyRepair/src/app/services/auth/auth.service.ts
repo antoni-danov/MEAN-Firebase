@@ -21,6 +21,7 @@ export class AuthService {
   error!: string;
   match: any;
   currentDate!: Date;
+  email!: string;
 
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
@@ -51,7 +52,7 @@ export class AuthService {
         this.jwt = data;
       });
 
-    this.cookiesFactory(this.jwt, userdata.uid, userdata.role);
+    this.cookiesFactory(this.jwt, userdata.uid, userdata.role, userdata.email);
 
     this.router.navigateByUrl('/main');
   }
@@ -77,8 +78,9 @@ export class AuthService {
       const currentJwt = await this.getIdToken();
       this.jwt = currentJwt!;
       this.role = userdata.role;
+      this.email = currentEmail;
 
-      this.cookiesFactory(this.jwt, this.uid, this.role);
+      this.cookiesFactory(this.jwt, this.uid, this.role, this.email);
 
       this.router.navigateByUrl('/main');
     }
@@ -89,6 +91,7 @@ export class AuthService {
     await this.cookieService.delete('JWT');
     await this.cookieService.delete('uid');
     await this.cookieService.delete('role');
+    await this.cookieService.delete('email');
 
     await this.afAuth.signOut();
     await location.reload();
@@ -123,7 +126,7 @@ export class AuthService {
     }
     return false;
   }
-  cookiesFactory(jwt: string, uid: string, role: string) {
+  cookiesFactory(jwt: string, uid: string, role: string, email: string) {
 
     this.currentDate = new Date();
     this.currentDate.setHours(this.currentDate.getHours() + 12);
@@ -131,6 +134,7 @@ export class AuthService {
     this.cookieService.set('JWT', jwt, { expires: this.currentDate, secure: true });
     this.cookieService.set('uid', uid, { expires: this.currentDate, secure: true });
     this.cookieService.set('role', role, { expires: this.currentDate, secure: true });
+    this.cookieService.set('email', email, { expires: this.currentDate, secure: true });
   }
   async getIdToken() {
 

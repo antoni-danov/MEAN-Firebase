@@ -26,7 +26,7 @@
                     </p>
                 </div>
                 <div class="row float-right">
-                    <div class="col"><strong>Email: </strong><button class="btn btn-info" routerLink="/contact">
+                    <div class="col"><strong>Email: </strong><button class="btn btn-info">
                             {{profileAllPublic.email}}</button></div>
                 </div>
                 <div class="row float-right my-3">
@@ -97,7 +97,7 @@
     </div>
 </div>
 <div class="profile mt-5" *ngIf="profile">
-    <div class="container-fluid" *ngIf="userInfo">
+    <div class="container-fluid">
         <div class="row" *ngIf="!isOwner">
             <div style="width: 14rem;">
                 <img *ngIf="profileAllPublic.profession == 'electrician'" class="col-sm-4 rounded float-left"
@@ -230,7 +230,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="number" placeholder="Phone number" id="phonenumber"
-                            name="phonenumber" formControlName="phonenumber">
+                            name="phonenumber" formControlName="phonenumber" trim="blur">
                         <i class="fas fa-check" *ngIf="form.get('phonenumber').valid && form.get('phonenumber').touched"
                             [ngClass]="{checked: form.get('phonenumber').valid}"></i>
                     </div>
@@ -243,7 +243,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="text" placeholder="City" id="city" name="city"
-                            formControlName="city">
+                            formControlName="city"> trim="blur"
                         <i class="fas fa-check" *ngIf="form.get('city').valid && form.get('city').touched"
                             [ngClass]="{checked: form.get('city').valid}"></i>
                     </div>
@@ -256,7 +256,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="text" placeholder="Address" id="addressLine"
-                            name="addressLine" formControlName="addressLine">
+                            name="addressLine" formControlName="addressLine" trim="blur">
                         <i class="fas fa-check" *ngIf="form.get('addressLine').valid && form.get('addressLine').touched"
                             [ngClass]="{checked: form.get('addressLine').valid}"></i>
                     </div>
@@ -271,7 +271,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="number" placeholder="ZIP Code" id="zipCode" name="zipCode"
-                            formControlName="zipCode">
+                            formControlName="zipCode" trim="blur">
                         <i class="fas fa-check" *ngIf="form.get('zipCode').valid && form.get('zipCode').touched"
                             [ngClass]="{checked: form.get('zipCode').valid}"></i>
                     </div>
@@ -284,7 +284,7 @@
                             </div>
                         </div>
                         <input class="form-control" type="number" placeholder="Number" id="strNumber" name="strNumber"
-                            formControlName="strNumber">
+                            formControlName="strNumber" trim="blur">
                         <i class="fas fa-check" *ngIf="form.get('strNumber').valid && form.get('strNumber').touched"
                             [ngClass]="{checked: form.get('strNumber').valid}"></i>
                     </div>

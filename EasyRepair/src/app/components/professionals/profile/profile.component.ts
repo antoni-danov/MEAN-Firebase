@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   form: any;
   message!: string;
   updateInformation!: UpdateProfessional;
+  email!: string;
 
   action: 'profile' | 'update' = 'profile';
   uid: string;
@@ -75,6 +76,7 @@ export class ProfileComponent implements OnInit {
     return await this.service.PublicProfessional(this.uid).then(data => {
       this.profileAllPublic = data;
     });
+
   }
   async setDefaultForm() {
 

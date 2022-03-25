@@ -23,10 +23,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { MainComponent } from './components/main/main.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { InstantSearchPipe } from './pipes/search/instant-search.pipe';
 import { InterceptorService } from './services/interceptor/interceptor.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProfileComponent,
     PageNotFoundComponent,
     FooterComponent,
-    ContactComponent,
     InstantSearchPipe
   ],
   imports: [
@@ -53,7 +52,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AngularFireAuthModule, // auth
     AngularFireStorageModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxTrimDirectiveModule
   ],
   providers: [
     CookieService,

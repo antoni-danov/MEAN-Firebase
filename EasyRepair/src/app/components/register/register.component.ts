@@ -81,7 +81,8 @@ export class RegisterComponent implements OnInit, OnChanges {
     this.profession;
   }
   raidoValue(data: any) {
-    if (data) {
+
+    if (data.target.id) {
       this.role = true;
 
       if (data.target.id === 'professional') {
