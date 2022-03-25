@@ -11,7 +11,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { MainComponent } from './components/main/main.component';
-import { ContactComponent } from './components/contact/contact.component';
 
 const redirectLoggedInUserProfile = () => map(user => user ? ['user/profile', (user as any).uid] : true);
 const redirectLoggedInProfProfile = () => map(user => user ? ['professionals/profile', (user as any).uid] : true);
@@ -33,7 +32,6 @@ const routes: Routes = [
   {
     path: 'main', component: MainComponent
   },
-  { path: 'contact', component: ContactComponent },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent }
 ];
 
