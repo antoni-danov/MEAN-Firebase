@@ -22,7 +22,7 @@ export class UserService {
   ) { }
 
   async RoleEmailMatch(role: string, email: string) {
-    return await this.http.get(`${environment.userLocalhost}/find/${email}/${role}`).toPromise();
+    return await this.http.get(`${environment.userLocalhost}/user/${email}/${role}`).toPromise();
   }
   async CreateUserData(userdata: User) {
 
