@@ -3,33 +3,28 @@ const User = require('../models/User');
 
 router.post('/create', async (req, res) => {
 
-    try {
-        const user = await new User({
-            uid: req.body.uid,
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            phonenumber: req.body.phonenumber,
-            address: {
-                strNumber: req.body.strNumber,
-                addressLine: req.body.addressLine,
-                city: req.body.city,
-                zipCode: req.body.zipCode
-            },
-            role: req.body.role
-        });
+    const user = await new User({
+        uid: req.body.uid,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        phonenumber: req.body.phonenumber,
+        address: {
+            strNumber: req.body.strNumber,
+            addressLine: req.body.addressLine,
+            city: req.body.city,
+            zipCode: req.body.zipCode
+        },
+        role: req.body.role
+    });
 
-        user.save((err, data) => {
-            if (err) {
-                return console.log(err);
-            }
-            res.json(data);
-        });
-    } catch (error) {
-        console.log(error.message);
-    }
+    user.save((err, data) => {
+        if (err) {
+            return res.status(400).json(err); //TODO
+        }
+    });
 
-    return this.user;
+    return res.status(201).json(this.user);
 });
 router.get('/user/:email/:role', async (req, res) => {
 
