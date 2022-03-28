@@ -33,7 +33,7 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
-router.get('/find/:email/:role', async (req, res) => {
+router.get('/professional/:email/:role', async (req, res) => {
 
     var isMatch = false;
 
@@ -56,10 +56,10 @@ router.get('/find/:email/:role', async (req, res) => {
         console.log(error);
     }
 });
-router.get('/all', async (req, res) => {
+router.get('/professionals', async (req, res) => {
     return res.json(await Professional.find({}).sort({ 'lastname': 1 }).lean());
 });
-router.get('/profession/:profession', async (req, res) => {
+router.get('/professionals/:profession', async (req, res) => {
     return res.json(await Professional.find({ profession: req.params.profession }).sort({ 'lastname': 1 }).lean());
 });
 router.get('/profile/:id', async (req, res) => {

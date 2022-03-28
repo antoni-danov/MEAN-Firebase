@@ -30,7 +30,7 @@ const routes: Routes = [
     canActivate: [AuthGuard, AngularFireAuthGuard],
   },
   {
-    path: 'main', component: MainComponent
+    path: 'professionals', component: MainComponent
   },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent }
 ];

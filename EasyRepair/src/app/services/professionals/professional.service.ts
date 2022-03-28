@@ -24,7 +24,7 @@ export class ProfessionalService {
   ) { }
 
   async RoleEmailMatch(role: string, email: string) {
-    return await this.http.get(`${environment.professionalLocalhost}/find/${email}/${role}`).toPromise();
+    return await this.http.get(`${environment.professionalLocalhost}/professional/${email}/${role}`).toPromise();
   }
   async CreateProfessionalData(userdata: Professional) {
 
@@ -34,10 +34,10 @@ export class ProfessionalService {
       });
   }
   async GetAllProfessionals(): Promise<GetProfessional[]> {
-    return await this.http.get<GetProfessional[]>(`${environment.professionalLocalhost}/all`).toPromise();
+    return await this.http.get<GetProfessional[]>(`${environment.professionalLocalhost}/professionals`).toPromise();
   }
   async GetByProfession(userdata: string): Promise<GetProfessional[]> {
-    return await this.http.get<GetProfessional[]>(`${environment.professionalLocalhost}/profession/${userdata}`).toPromise();
+    return await this.http.get<GetProfessional[]>(`${environment.professionalLocalhost}/professionals/${userdata}`).toPromise();
   }
   async GetProfessionalById(uid: string): Promise<Professional> {
     return await this.http.get<Professional>(`${environment.professionalLocalhost}/profile/${uid}`).toPromise();

@@ -4,8 +4,8 @@
     </section>
     <section class="buttons">
         <button *ngIf="loggedIn == false" class="btn btn-info" routerLink="/">Home</button>
-        <button class="btn btn-info" routerLink="/main">Our professionals</button>
-        <button *ngIf="loggedIn == false" class="btn btn-info" routerLink="/login">Login</button>
+        <button class="btn btn-info" routerLink="/professionals">Our professionals</button>
+        <button *ngIf=" loggedIn==false" class="btn btn-info" routerLink="/login">Login</button>
         <button *ngIf="loggedIn == false" class="btn btn-info" routerLink="/register">Register</button>
         <div *ngIf="loggedIn == true" class="dropdown" id="profileSection">
             <div *ngIf="role == 'User'">
@@ -43,7 +43,7 @@
             <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
             <div class="overlay-content" *ngIf="loggedIn == false">
                 <a routerLink="/" (click)="closeNav()">Home</a>
-                <a routerLink="/main" (click)="closeNav()">Our professionals</a>
+                <a routerLink="/professionals" (click)="closeNav()">Our professionals</a>
                 <a routerLink="/login" (click)="closeNav()">Login</a>
                 <a routerLink="/register" (click)="closeNav()">Register</a>
             </div>
@@ -51,13 +51,13 @@
                 <div *ngIf="role == 'User'">
                     <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">
                     <a routerLink="/user/profile/{{userUid}}" (click)="closeNav()">Profile</a>
-                    <a routerLink="/main" (click)="closeNav()">Our professionals</a>
+                    <a routerLink="/professionals" (click)="closeNav()">Our professionals</a>
                     <a routerLink="/" (click)="logout()">Logout</a>
                 </div>
                 <div *ngIf="role == 'Professional'">
                     <a routerLink="/professionals/profile/{{userUid}}" (click)="closeNav()"><img class="rounded"
                             src="../../../../assets/images/builder.png" alt="Card image cap"><br> Profile</a>
-                    <a routerLink="/main" (click)="closeNav()">Our professionals</a>
+                    <a routerLink="/professionals" (click)="closeNav()">Our professionals</a>
                     <a routerLink="/" (click)="logout()">Logout</a>
                 </div>
             </div>
