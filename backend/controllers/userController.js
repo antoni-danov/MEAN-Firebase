@@ -31,7 +31,7 @@ router.post('/create', async (req, res) => {
 
     return this.user;
 });
-router.get('/find/:email/:role', async (req, res) => {
+router.get('/user/:email/:role', async (req, res) => {
 
     var isMatch = false;
 
