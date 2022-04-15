@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     if (this.service.isAuthenticated()) {
-      this.router.navigateByUrl('/main');
+      this.router.navigateByUrl('/professionals');
     };
   }
 
