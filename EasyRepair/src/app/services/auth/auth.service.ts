@@ -82,7 +82,7 @@ export class AuthService {
 
       this.cookiesFactory(this.jwt, this.uid, this.role, this.email);
 
-      this.router.navigateByUrl('/main');
+      this.router.navigateByUrl('/professionals');
     }
 
   }

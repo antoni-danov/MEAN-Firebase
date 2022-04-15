@@ -108,11 +108,11 @@ router.put('/edit/:id', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     const userId = req.params.id;
 
-    return await User.deleteOne({ 'uid': userId }, (err, data) => {
+    return await User.deleteOne({ 'uid': userId }, (err) => {
         if (err) {
-            return console.log(err);
+            res.status(401).json(err);
         } else {
-            return res.status(200).json('User delete sucessfully.');
+            res.status(200).json('User delete sucessfully.');
         }
     });
 

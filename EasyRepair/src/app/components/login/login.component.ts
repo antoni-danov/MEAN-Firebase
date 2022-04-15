@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     if (this.service.isAuthenticated()) {
-      this.router.navigateByUrl('/main');
+      this.router.navigateByUrl('/professionals');
     };
 
     this.form = new FormGroup({
