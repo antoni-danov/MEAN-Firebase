@@ -8,6 +8,9 @@
         <button *ngIf=" loggedIn==false" class="btn btn-info" routerLink="/login">Login</button>
         <button *ngIf="loggedIn == false" class="btn btn-info" routerLink="/register">Register</button>
         <div *ngIf="loggedIn == true" class="dropdown" id="profileSection">
+            <div *ngIf="role == 'N/A'">
+                <button class="btn btn-info" (click)="logoutFromPopup()">Logout</button>
+            </div>
             <div *ngIf="role == 'User'">
                 <button class="btn btn-info">
                     <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">

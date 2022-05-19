@@ -53,5 +53,8 @@ export class LoginComponent implements OnInit, OnChanges {
     });
 
   }
+  async PopUpGoogle() {
+    await this.service.SignInWithPopUp().then(data => { });
+  }
 
 }

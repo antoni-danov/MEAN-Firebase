@@ -41,4 +41,8 @@ export class NavbarComponent implements OnInit, AfterContentChecked {
     this.service.SignOut();
     return this.router.navigateByUrl('/');
   }
+  logoutFromPopup() {
+    this.service.SignOutFromPopUp();
+    return this.router.navigateByUrl('/');
+  }
 }
