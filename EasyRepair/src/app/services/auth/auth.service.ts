@@ -13,7 +13,7 @@ import { errorMessage } from 'src/app/shared/errorMessageFactory';
 export class AuthService {
 
   isVisible: boolean = false;
-  uid!: string;
+  uid!: any;
   jwt!: string;
   userInfo: any;
   role!: string;
@@ -21,7 +21,7 @@ export class AuthService {
   error!: string;
   match: any;
   currentDate!: Date;
-  email!: string;
+  email!: string | any;
 
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
@@ -30,6 +30,29 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
+  async SignInWithPopUp() {
+    var provider = new firebase.default.auth.GoogleAuthProvider();
+
+    return await firebase.default.auth().signInWithPopup(provider).then((result) => {
+      this.jwt = (<any>result).credential?.accessToken;
+      this.uid = result.user?.uid;
+      this.email = result.user?.email;
+
+      if (!this.role) {
+        this.role = "N/A";
+      }
+
+      this.cookiesFactory(this.jwt, this.uid, this.role, this.email);
+
+      this.router.navigateByUrl('/professionals');
+
+    }).catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    });
+  }
   async SignUpWithEmailAndPassword(userdata: any) {
     const result = await this.afAuth.createUserWithEmailAndPassword(userdata.email, userdata.password)
       .catch(error => {
@@ -84,6 +107,21 @@ export class AuthService {
 
       this.router.navigateByUrl('/professionals');
     }
+
+  }
+  async SignOutFromPopUp() {
+    await this.cookieService.delete('JWT');
+    await this.cookieService.delete('uid');
+    await this.cookieService.delete('role');
+    await this.cookieService.delete('email');
+
+    firebase.default.auth().signOut().then(function () {
+
+    }).catch(function (error) {
+      console.log(error);
+
+    });
+
 
   }
   async SignOut() {

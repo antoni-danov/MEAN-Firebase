@@ -1,3 +1,9 @@
+#google {
+  background-color: transparent;
+  border: 1px solid black;
+  margin: 1% 20% 4% 17%;
+  padding: 2% 28%;
+}
 .container {
   width: 35%;
   height: 135%;

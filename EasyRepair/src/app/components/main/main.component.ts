@@ -80,4 +80,7 @@ export class MainComponent implements OnInit {
 
     return false;
   }
+  signOut() {
+    this.authService.SignOutFromPopUp();
+  }
 }

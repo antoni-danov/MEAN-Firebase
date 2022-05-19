@@ -88,6 +88,8 @@
             <button class="btn btn-primary" type="submit"
                 [disabled]="form.invalid || !role || form.get('password').pristine">Login</button>
         </form>
+        <button id="google" class="btn btn-primary btn-sm" (click)="PopUpGoogle()"><img
+                src="../../../assets/icons/google.png" alt=""></button>
         <div>You don't have account? <br><a href="/register" class="text-center">Sign Up</a></div>
         <br>
     </section>
