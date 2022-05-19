@@ -51,6 +51,9 @@
                 <a routerLink="/register" (click)="closeNav()">Register</a>
             </div>
             <div class="overlay-content" *ngIf="loggedIn == true">
+                <div *ngIf="role == 'N/A'">
+                    <button class="btn btn-info" (click)="logoutFromPopup()">Logout</button>
+                </div>
                 <div *ngIf="role == 'User'">
                     <img class="rounded" src="../../../../assets/images/programmer.png" alt="Card image cap">
                     <a routerLink="/user/profile/{{userUid}}" (click)="closeNav()">Profile</a>
