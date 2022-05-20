@@ -92,10 +92,7 @@ router.put('/edit/:id', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     const userId = req.params.id;
 
-    await service.delete_user_profile(userId).then(data => {
-        console.log(data);
-    })
-        .catch();
+    await service.delete_user_profile(userId);
 });
 
 module.exports = router;
