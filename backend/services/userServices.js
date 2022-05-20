@@ -1,4 +1,5 @@
 const User = require('../models/User');
+// const User = require('../models/User');
 
 exports.user_profile = async (userId) => {
     var user;
