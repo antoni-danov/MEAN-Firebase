@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const service = require('../services/userServices');
 
 router.post('/create', async (req, res) => {
 
-    const user = await new User({
+    var user = new User({
         uid: req.body.uid,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -18,35 +19,31 @@ router.post('/create', async (req, res) => {
         role: req.body.role
     });
 
-    user.save((err, data) => {
-        if (err) {
-            return res.status(400).json(err); //TODO
-        }
+    await service.create_user(user).then(data => {
+        user = data;
     });
 
-    return res.status(201).json(this.user);
+    return res.status(201).json(user);
 });
 router.get('/user/:email/:role', async (req, res) => {
 
     var isMatch = false;
+    var check;
 
     try {
 
-        const checkForEmail = {
-            _id: 0,
-            email: 1
-        };
-
-        const check = await User.findOne({ email: req.params.email }, checkForEmail);
+        await service.user_email_match(req.params.email).then(data => {
+            check = data;
+        });
 
         if (check != null && check.email === req.params.email) {
             isMatch = true;
         }
 
-        return res.json(isMatch)
+        return res.json(isMatch);
 
     } catch (error) {
-        console.log(error);
+        res.statusCode(404).json(error);
     }
 });
 router.get('/profile/:id', async (req, res) => {
@@ -55,67 +52,50 @@ router.get('/profile/:id', async (req, res) => {
 
     const userId = req.params.id;
 
-    const userInfo = {
-        _id: 0,
-        firstname: 1,
-        lastname: 1,
-        email: 1,
-        phonenumber: 1,
-        address: {
-            strNumber: 1,
-            addressLine: 1,
-            city: 1,
-            zipCode: 1
-        },
-    };
-
     try {
         if (userId) {
-            await User.findOne({ uid: userId }, userInfo).then(data => {
+            await service.user_profile(userId).then(data => {
                 user = data;
             });
-
-            res.json(user);
         }
+        res.json(user);
     } catch (error) {
-        console.log(error.message);
+        res.status(404).send(error.message);
     }
 });
 router.put('/edit/:id', async (req, res) => {
+
     const userId = req.params.id;
+    var user;
+
+    const updateInfo = {
+        phonenumber: req.body.phonenumber,
+        address: {
+            strNumber: req.body.address.strNumber,
+            addressLine: req.body.address.addressLine,
+            city: req.body.address.city,
+            zipCode: req.body.address.zipCode
+        }
+    };
+
     try {
 
-        return await User.updateOne({ uid: userId }, {
-
-            phonenumber: req.body.phonenumber,
-            address: {
-                strNumber: req.body.address.strNumber,
-                addressLine: req.body.address.addressLine,
-                city: req.body.address.city,
-                zipCode: req.body.address.zipCode
-            }
-        }, (err, data) => {
-            if (err) {
-                return console.log(err.message);
-            } else {
-                return res.status(200).json(data);
-            }
+        await service.edit_user_info(userId, updateInfo).then(data => {
+            user = data;
         });
+
+        return res.json(user);
     } catch (error) {
-        console.log(error.message);
+        res.status(409).send(error.message);
     }
 });
 router.delete('/delete/:id', async (req, res) => {
     const userId = req.params.id;
 
-    return await User.deleteOne({ 'uid': userId }, (err) => {
-        if (err) {
-            res.status(401).json(err);
-        } else {
-            res.status(200).json('User delete sucessfully.');
-        }
-    });
-
+    await service.delete_user_profile(userId).then(data => {
+        console.log(data);
+    })
+        .catch();
 });
 
 module.exports = router;

@@ -116,6 +116,10 @@ img {
   .container {
     display: none;
   }
+  #googleLogout {
+    color: white;
+    border: none;
+  }
   .container-fluid,
   #profileSection,
   #myBtn,
