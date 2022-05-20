@@ -54,8 +54,6 @@ const getProfessionals = async (req, res) => {
         professionals = data;
     });
 
-    console.log(data);
-
     return res.status(200).json(professionals);
 };
 const getByProfession = async (req, res) => {
