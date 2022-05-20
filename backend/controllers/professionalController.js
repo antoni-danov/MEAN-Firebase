@@ -49,9 +49,13 @@ const professionalEmailMatch = async (req, res) => {
 };
 const getProfessionals = async (req, res) => {
     var professionals;
+
     await service.getProfessionals().then(data => {
         professionals = data;
     });
+
+    console.log(data);
+
     return res.status(200).json(professionals);
 };
 const getByProfession = async (req, res) => {

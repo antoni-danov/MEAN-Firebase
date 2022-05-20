@@ -53,7 +53,7 @@ const userProfile = async (req, res) => {
 
     try {
         if (userId) {
-            await service.user_profile(userId).then(data => {
+            await service.userProfile(userId).then(data => {
                 user = data;
             });
         }
