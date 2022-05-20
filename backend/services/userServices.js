@@ -1,8 +1,6 @@
 const User = require('../models/User');
-// const User = require('../models/User');
 
-exports.user_profile = async (userId) => {
-    var user;
+const userProfile = async (userId) => {
 
     const userInfo = {
         _id: 0,
@@ -18,31 +16,35 @@ exports.user_profile = async (userId) => {
         },
     };
 
-    await User.findOne({ uid: userId }, userInfo).then(data => {
-        user = data;
-    });
-    return user;
+    return await User.findOne({ uid: userId }, userInfo);
+
 };
-exports.user_email_match = async (email) => {
+const userEmailMatch = async (email) => {
     const checkForEmail = {
         _id: 0,
         email: 1
     };
 
-    const check = await User.findOne({ email: email }, checkForEmail);
-
-    return check;
+    return await User.findOne({ email: email }, checkForEmail);
 };
-exports.create_user = async (user) => {
+const createUser = async (user) => {
 
     return await user.save();
 };
-exports.edit_user_info = async (userId, userInfo) => {
+const editUserInfo = async (userId, userInfo) => {
 
     var user = await User.updateOne({ uid: userId }, userInfo);
     return user;
 };
-exports.delete_user_profile = async (userId) => {
+const deleteUserProfile = async (userId) => {
 
     return await User.deleteOne({ 'uid': userId });
+};
+
+module.exports = {
+    userEmailMatch,
+    userProfile,
+    createUser,
+    editUserInfo,
+    deleteUserProfile
 };

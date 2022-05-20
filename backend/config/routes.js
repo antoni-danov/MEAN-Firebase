@@ -1,7 +1,7 @@
-const userController = require('../controllers/userController');
-const professionalController = require('../controllers/professionalController');
+const userCatalog = require('../routes/userCatalog');
+const professionalCatalog = require('../routes/professionalCatalog');
 
 module.exports = (app) => {
-    app.use('/users', userController);
-    app.use('/professionals', professionalController);
+    app.use('/users', userCatalog);
+    app.use('/professionals', professionalCatalog);
 };

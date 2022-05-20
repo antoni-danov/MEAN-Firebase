@@ -1,8 +1,7 @@
-const router = require('express').Router();
 const User = require('../models/User');
 const service = require('../services/userServices');
 
-router.post('/create', async (req, res) => {
+const createUser = async (req, res) => {
 
     var user = new User({
         uid: req.body.uid,
@@ -19,20 +18,20 @@ router.post('/create', async (req, res) => {
         role: req.body.role
     });
 
-    await service.create_user(user).then(data => {
+    await service.createUser(user).then(data => {
         user = data;
     });
 
     return res.status(201).json(user);
-});
-router.get('/user/:email/:role', async (req, res) => {
+};
+const userEmailMatch = async (req, res) => {
 
     var isMatch = false;
     var check;
 
     try {
 
-        await service.user_email_match(req.params.email).then(data => {
+        await service.userEmailMatch(req.params.email).then(data => {
             check = data;
         });
 
@@ -45,8 +44,8 @@ router.get('/user/:email/:role', async (req, res) => {
     } catch (error) {
         res.statusCode(404).json(error);
     }
-});
-router.get('/profile/:id', async (req, res) => {
+};
+const userProfile = async (req, res) => {
 
     var user;
 
@@ -58,12 +57,12 @@ router.get('/profile/:id', async (req, res) => {
                 user = data;
             });
         }
-        res.json(user);
+        res.status(200).json(user);
     } catch (error) {
         res.status(404).send(error.message);
     }
-});
-router.put('/edit/:id', async (req, res) => {
+};
+const editUserProfile = async (req, res) => {
 
     const userId = req.params.id;
     var user;
@@ -80,7 +79,7 @@ router.put('/edit/:id', async (req, res) => {
 
     try {
 
-        await service.edit_user_info(userId, updateInfo).then(data => {
+        await service.editUserInfo(userId, updateInfo).then(data => {
             user = data;
         });
 
@@ -88,11 +87,17 @@ router.put('/edit/:id', async (req, res) => {
     } catch (error) {
         res.status(409).send(error.message);
     }
-});
-router.delete('/delete/:id', async (req, res) => {
+};
+const deleteUserProfile = async (req, res) => {
     const userId = req.params.id;
 
-    await service.delete_user_profile(userId);
-});
+    await service.deleteUserProfile(userId);
+};
 
-module.exports = router;
+module.exports = {
+    userProfile,
+    userEmailMatch,
+    createUser,
+    editUserProfile,
+    deleteUserProfile
+};
