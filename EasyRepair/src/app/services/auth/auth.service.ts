@@ -77,7 +77,7 @@ export class AuthService {
 
     this.cookiesFactory(this.jwt, userdata.uid, userdata.role, userdata.email);
 
-    this.router.navigateByUrl('/main');
+    this.router.navigateByUrl('/professionals');
   }
   async SignInWithEmailAndPassword(userdata: any) {
 
