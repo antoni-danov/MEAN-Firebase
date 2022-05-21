@@ -54,6 +54,7 @@ export class MainComponent implements OnInit {
     }
 
   }
+
   openNav() {
     document.getElementById("myNav")!.style.width = "100%";
   }
