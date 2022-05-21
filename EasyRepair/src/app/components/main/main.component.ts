@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAll();
+    this.loadProfessionals(this.p);
   }
 
   get list() {
@@ -36,11 +36,23 @@ export class MainComponent implements OnInit {
   getValue(event: any) {
     this.searchValue = event.value;
   }
-  async getAll() {
-    return await this.service.GetAllProfessionals().then(data => {
-      this.allProfessions = data;
-      this.spiner = false;
-    });
+  async loadProfessionals(page: number) {
+    var currentPage;
+
+    if (page === 0) {
+      currentPage = 0;
+    } else {
+      currentPage = page - 1;
+    }
+
+    for (let index = currentPage * 10; index < (currentPage * 10) + 10; index++) {
+
+      return await this.service.GetAllProfessionals().then((data: any) => {
+        this.allProfessions = data;
+        this.spiner = false;
+      });
+    }
+
   }
   openNav() {
     document.getElementById("myNav")!.style.width = "100%";
